@@ -180,24 +180,19 @@ body {
     border-top-color: white; /* Blauwe kleur bovenaan */
     color: white;
     border-radius: 50%;
-    animation: test 6s linear infinite;
+    animation: spin 6s linear infinite;
   }
   
   .loadingBullet{
-    width: 2px;
-    height: 2px;
-    border: 5px solid black;
-    border-top-color: black; /* Blauwe kleur bovenaan */
-    color: black;
+    width: 20px;
+    height: 20px;
+    border: 5px solid white;
+    border-top-color: white; /* Blauwe kleur bovenaan */
+    color: white;
     border-radius: 50%;
-    transform: translateX(130px);
-    /* animation: test 5s linear infinite; */
+    animation: spin 5s linear infinite;
   }
 
-  @keyframes test{
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
-  }
   @keyframes spin {
       0% { transform: rotate(0deg) translateX(150px) translateY(150px); }
       50% { transform: rotate(360deg) translateX(150px) translateY(10px);}
