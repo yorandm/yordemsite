@@ -113,12 +113,18 @@ const setOnChangeForOption = () => {
 
 
 const init = async () => {
-    await populate();
-    getOption();
-    setOnChangeForOption();
-    fillScreen();
-    updateScore();
-    pdf();
+    try{
+        await populate();
+        getOption();
+        setOnChangeForOption();
+        fillScreen();
+        updateScore();
+        pdf();
+    } catch(error){
+        console.error("Fout bij ophalen van data:", error);
+        document.getElementById("challengeBody").innerHTML= `<p class="error">Er is iets een beetje fout gegaan. Probeer het nog eens! Lukt het nog niet? Je kan me altijd contacteren.</p>`
+    }
+
 
 }
 

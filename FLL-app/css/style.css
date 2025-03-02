@@ -5,6 +5,7 @@
 body {
     background-color:  var(--vtiBlauw);/* rgba(0, 255, 255, 0.225);*/
     padding-bottom: 75px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
@@ -170,3 +171,36 @@ body {
         width:100%;
     }
 }
+
+
+.error{
+    font-weight: bolder;
+    color:red;
+}
+
+.loading{
+    margin-top: 150px;;
+    width: 200px;
+    height: 200px;
+    border: 5px solid white;
+    border-top-color: white; /* Blauwe kleur bovenaan */
+    color: white;
+    border-radius: 50%;
+    animation: spin 6s linear infinite;
+  }
+  
+  .loadingBullet{
+    width: 20px;
+    height: 20px;
+    border: 5px solid white;
+    border-top-color: white; /* Blauwe kleur bovenaan */
+    color: white;
+    border-radius: 50%;
+    animation: spin 5s linear infinite;
+  }
+
+  @keyframes spin {
+      0% { transform: rotate(0deg) translateX(150px) translateY(150px); }
+      50% { transform: rotate(360deg) translateX(150px) translateY(10px);}
+      100% { transform: rotate(0deg) translateX(150px) translateY(150px); }
+  }
