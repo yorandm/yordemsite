@@ -156,6 +156,7 @@ body {
         position: unset;
     }
     .minusButton,
+    #generate-pdf,
     .plusButton{
        visibility: hidden; 
     }
@@ -163,4 +164,4 @@ body {
         all:unset;
         width:100%;
     }
-  }
+}

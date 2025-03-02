@@ -9,53 +9,53 @@ const pdf = () => {
             putOnlyUsedFonts: true
         });
 
-        doc.text("First Lego League",10,10);
-        doc.text(`names: ${document.getElementById("names").value}`,10,20);
+        doc.text("First Lego League", 10, 10);
+        doc.text(`names: ${document.getElementById("names").value}`, 10, 20);
         let currentY = 30;
 
-        const checkmark = ()=>{
+        const checkmark = () => {
             doc.setDrawColor("#013220")
-            doc.lines([[1,1], [1,-3]], x,currentY-1, [1,1], 'S', false);
+            doc.lines([[1, 1], [1, -3]], x, currentY - 1, [1, 1], 'S', false);
         }
 
-        const checkLength = () =>{
-            if(currentY >=280){
+        const checkLength = () => {
+            if (currentY >= 280) {
                 doc.addPage();
-                currentY=10;
+                currentY = 10;
             }
         }
         for (const challenge of missions) {
-            
-            doc.text(`MISSIE ${challenge.missionID} - ${challenge.missionTitle}:`, 10,currentY);
-            doc.addImage(challenge.missionImg,"jpg",1,1,50,50);
-            for (const point of challenge.missionPoints) {
-                currentY +=10;
-                checkLength();
-                doc.text(`${point.description} ${point.points}`, 20, currentY, {maxWidth:180});
-                
-                if (point.type === "single" || point.type==="bonus") {
-                   if(document.getElementById(`m${challenge.missionID}p${point.id}`).checked) checkmark();  
 
-                } else if (point.type === "each"){
+            doc.text(`MISSIE ${challenge.missionID} - ${challenge.missionTitle}:`, 10, currentY);
+            doc.addImage(challenge.missionImg, "jpg", 1, 1, 50, 50);
+            for (const point of challenge.missionPoints) {
+                currentY += 10;
+                checkLength();
+                doc.text(`${point.description} ${point.points}`, 20, currentY, { maxWidth: 180 });
+
+                if (point.type === "single" || point.type === "bonus") {
+                    if (document.getElementById(`m${challenge.missionID}p${point.id}`).checked) checkmark();
+
+                } else if (point.type === "each") {
                     doc.text(`${document.getElementById(`numberM${challenge.missionID}p${point.id}`).value}`, x, currentY)
                 }
 
-                if(`${point.description} ${point.points}:`.length/56>1){
-                    currentY +=5*`${point.description} ${point.points}:`.length/56;
+                if (`${point.description} ${point.points}:`.length / 56 > 1) {
+                    currentY += 5 * `${point.description} ${point.points}:`.length / 56;
                     checkLength();
                 }
             }
-        
-            currentY +=10;
+
+            currentY += 10;
             checkLength();
 
         }
-        doc.setFont("Helvetica","bold");
+        doc.setFont("Helvetica", "bold");
         doc.text(`De totale score is: ${document.getElementById("totalScore").innerText}`, x, currentY);
         // Save the PDF
-        const fileName = document.getElementById("names").value.split(",").map((el)=>el.trim()).join("_");
+        const fileName = document.getElementById("names").value.split(",").map((el) => el.trim()).join("_");
 
-        doc.save(fileName?`${fileName}.pdf`:`fll_score.pdf`);
+        doc.save(fileName ? `${fileName}.pdf` : `fll_score.pdf`);
     });
 }
 

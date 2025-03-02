@@ -1,13 +1,13 @@
 [
     {
         "missionID": 0,
-        "missionTitle":"Uitrustingsinspectie",
+        "missionTitle": "Uitrustingsinspectie",
         "missionImg": "20242025/inspectie.png",
-        "NoEquipment":false,
-        "missionPoints":[
+        "NoEquipment": false,
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de robot en al de uitrusting volledig past in &eacute;&eacute;n startgebied en onder een hoogtelimiet van 30,5cm blijft tijdens de inspectie:",
                 "points": 20,
                 "factor": 1
@@ -16,28 +16,28 @@
     },
     {
         "missionID": 1,
-        "missionTitle":"KORAALKWEKERIJ",
+        "missionTitle": "KORAALKWEKERIJ",
         "missionImg": "20242025/missie_01.png",
-        "NoEquipment":true,
-        "missionPoints":[
+        "NoEquipment": true,
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de koraalboom aan de koraalboomsteun hangt:",
                 "points": 20,
                 "factor": 1.25
             },
             {
-                "id":2,
-                "type":"bonus",
-                "bonusTo":1,
+                "id": 2,
+                "type": "bonus",
+                "bonusTo": 1,
                 "description": "Bonus: en de onderkant van de koraalboom in de houder zit:",
                 "points": 10,
                 "factor": 1.25
             },
             {
-                "id":3,
-                "type":"single",
+                "id": 3,
+                "type": "single",
                 "description": "Als de koraalknoppen omhoog zijn geklapt:",
                 "points": 20,
                 "factor": 0.75
@@ -46,19 +46,19 @@
     },
     {
         "missionID": 2,
-        "missionTitle":"Haai",
+        "missionTitle": "Haai",
         "missionImg": "20242025/missie_02.png",
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de haai de grot niet meer aanraakt:",
                 "points": 20,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als de haai de mat aanraakt en ten minste gedeeltelijk in het haaileefgebied is:",
                 "points": 10,
                 "factor": 0.75
@@ -67,20 +67,20 @@
     },
     {
         "missionID": 3,
-        "missionTitle":"Koraalrif",
+        "missionTitle": "Koraalrif",
         "missionImg": "20242025/missie_03.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als het koraalrif omhoog is geklapt en de mat niet aanraakt:",
                 "points": 20,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"each",
+                "id": 2,
+                "type": "each",
                 "amount": 3,
                 "description": "Als het rifsegment rechtop staat buiten het startgebied en de mat aanraakt:",
                 "points": 5,
@@ -90,20 +90,20 @@
     },
     {
         "missionID": 4,
-        "missionTitle":"Duiker",
+        "missionTitle": "Duiker",
         "missionImg": "20242025/missie_04.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de duiker niet meer de koraalkwekerij aanraakt:",
                 "points": 20,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als de duiker aan de koraalrifsteun hangt:",
                 "points": 20,
                 "factor": 0.75
@@ -112,13 +112,13 @@
     },
     {
         "missionID": 5,
-        "missionTitle":"Hengelvis",
+        "missionTitle": "Hengelvis",
         "missionImg": "20242025/missie_05.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de hengelvis vergrendeld is in het scheepswrak:",
                 "points": 30,
                 "factor": 0.75
@@ -127,13 +127,13 @@
     },
     {
         "missionID": 6,
-        "missionTitle":"Hijs de mast",
+        "missionTitle": "Hijs de mast",
         "missionImg": "20242025/missie_06.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de mast van het sheepswrak volledig is opgehesen:",
                 "points": 30,
                 "factor": 1
@@ -142,13 +142,13 @@
     },
     {
         "missionID": 7,
-        "missionTitle":"Kraken's schat",
+        "missionTitle": "Kraken's schat",
         "missionImg": "20242025/missie_07.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de schatkist volledig buiten het krakennest is:",
                 "points": 30,
                 "factor": 1
@@ -157,14 +157,14 @@
     },
     {
         "missionID": 8,
-        "missionTitle":"Kunstmatig leefgebied",
+        "missionTitle": "Kunstmatig leefgebied",
         "missionImg": "20242025/missie_08.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"each",
-                "amount":4,
+                "id": 1,
+                "type": "each",
+                "amount": 4,
                 "description": "Als een segment van het kunstmatig leefgebied volledig vlak en rehtopstaand is:",
                 "points": 10,
                 "factor": 1.25
@@ -173,20 +173,20 @@
     },
     {
         "missionID": 9,
-        "missionTitle":"Onverwachte ontmoeting",
+        "missionTitle": "Onverwachte ontmoeting",
         "missionImg": "20242025/missie_09.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als het onbekende dier is losgelaten:",
                 "points": 20,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als het onbekende dier ten minste gedeeltelijk in de koude submariene bron is:",
                 "points": 10,
                 "factor": 0.75
@@ -195,20 +195,20 @@
     },
     {
         "missionID": 10,
-        "missionTitle":"Stuur de duikboot over",
+        "missionTitle": "Stuur de duikboot over",
         "missionImg": "20242025/missie_10.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als de gele vlag van jullie team naar beneden is:",
                 "points": 30,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als de duikboot duidelijk dichter bij het tegenoverliggende veld is:",
                 "points": 10,
                 "factor": 0.75
@@ -217,20 +217,20 @@
     },
     {
         "missionID": 11,
-        "missionTitle":"Sonardetectie",
+        "missionTitle": "Sonardetectie",
         "missionImg": "20242025/missie_11.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als er &eacute;&eacute;n walvis is onthuld:",
                 "points": 20,
                 "factor": 1.25
             },
             {
-                "id":2,
-                "type":"bonus",
+                "id": 2,
+                "type": "bonus",
                 "description": "Als beide walvissen zijn onthuld:",
                 "points": 10,
                 "factor": 1.25
@@ -239,14 +239,14 @@
     },
     {
         "missionID": 12,
-        "missionTitle":"voed de walvis",
+        "missionTitle": "voed de walvis",
         "missionImg": "20242025/missie_12.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"each",
-                "amount":5,
+                "id": 1,
+                "type": "each",
+                "amount": 5,
                 "description": "Krill ten minste gedeeltelijk in de mond van de walvis:",
                 "points": 10,
                 "factor": 1.25
@@ -255,13 +255,13 @@
     },
     {
         "missionID": 13,
-        "missionTitle":"Vaarroutes wijzigen",
+        "missionTitle": "Vaarroutes wijzigen",
         "missionImg": "20242025/missie_13.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als het schip zich in de nieuwe vaarroute bevindt en de mat aanraakt:",
                 "points": 20,
                 "factor": 1
@@ -270,41 +270,41 @@
     },
     {
         "missionID": 14,
-        "missionTitle":"Staalverzameling",
+        "missionTitle": "Staalverzameling",
         "missionImg": "20242025/missie_14.png",
         "NoEquipment": false,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als het waterstaal volledig buiten het waterstaalgebied is:",
                 "points": 5,
-                "factor": 0.75  
+                "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als het zeebodemstaal niet meer de zeebodem aanraakt:",
                 "points": 10,
                 "factor": 0.75
             },
             {
-                "id":3,
-                "type":"single",
+                "id": 3,
+                "type": "single",
                 "description": "Als het planktonstaal niet meer het kelpwoud aanraakt:",
                 "points": 10,
                 "factor": 0.75
             },
             {
-                "id":4,
-                "type":"single",
+                "id": 4,
+                "type": "single",
                 "description": "Als &eacute;&eacute;n onderdeel van de drietand niet meer het scheepswrak raakt:",
                 "points": 20,
                 "factor": 1
             },
             {
-                "id":5,
-                "type":"bonus",
+                "id": 5,
+                "type": "bonus",
                 "description": "Als beide onderdelen het scheepswrak niet meer raken:",
                 "points": 10,
                 "factor": 1
@@ -313,55 +313,55 @@
     },
     {
         "missionID": 15,
-        "missionTitle":"Onderzoeksschip",
+        "missionTitle": "Onderzoeksschip",
         "missionImg": "20242025/missie_15.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "Als het waterstaal ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "Als het zeebodemstaal ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":3,
-                "type":"single",
+                "id": 3,
+                "type": "single",
                 "description": "Als het planktonstaal ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":4,
-                "type":"single",
+                "id": 4,
+                "type": "single",
                 "description": "Als &eacute;&eacute;n onderdeel van de drietand ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":5,
-                "type":"bonus",
+                "id": 5,
+                "type": "bonus",
                 "description": "Als beide onderdelen van de drietand ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":6,
-                "type":"single",
+                "id": 6,
+                "type": "single",
                 "description": "Als de schatkist ten minste gedeeltelijk in het vrachtruim zit:",
                 "points": 5,
                 "factor": 0.75
             },
             {
-                "id":7,
-                "type":"single",
+                "id": 7,
+                "type": "single",
                 "description": "Als de havensluiting ten minste gedeeltelijk in de schipslus zit:",
                 "points": 20,
                 "factor": 1
@@ -370,53 +370,53 @@
     },
     {
         "missionID": 16,
-        "missionTitle":"Precisietokens",
+        "missionTitle": "Precisietokens",
         "missionImg": "20242025/precisietokens.png",
         "NoEquipment": true,
-        "missionPoints":[
+        "missionPoints": [
             {
-                "id":1,
-                "type":"single",
+                "id": 1,
+                "type": "single",
                 "description": "precisietoken 1 =",
                 "checked": true,
                 "points": 10,
                 "factor": 1
             },
             {
-                "id":2,
-                "type":"single",
+                "id": 2,
+                "type": "single",
                 "description": "precisietoken 2 = +",
                 "checked": true,
                 "points": 5,
                 "factor": 1
             },
             {
-                "id":3,
-                "type":"single",
+                "id": 3,
+                "type": "single",
                 "description": "precisietoken 3 = +",
                 "checked": true,
                 "points": 10,
                 "factor": 1
             },
             {
-                "id":4,
-                "type":"single",
+                "id": 4,
+                "type": "single",
                 "description": "precisietoken 4 = + ",
                 "checked": true,
                 "points": 10,
                 "factor": 1
             },
             {
-                "id":5,
-                "type":"single",
+                "id": 5,
+                "type": "single",
                 "description": "precisietoken 5 = +",
                 "checked": true,
                 "points": 15,
                 "factor": 1
             },
             {
-                "id":6,
-                "type":"single",
+                "id": 6,
+                "type": "single",
                 "description": "precisietoken 6 = +",
                 "checked": true,
                 "points": 0,
