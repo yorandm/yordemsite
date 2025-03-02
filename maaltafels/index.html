@@ -3,9 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Maaltafels</title>
 </head>
-<body>
-    <span id="eersteTerm"></span> x <span id="tweedeTerm"></span> <input id="antwoord"/> <button id="answ"></button>
+<body id="body">
+    <div id="infoContainer">
+        <div id="timer"></div>
+        <div id="score"></div>
+        <div id="totalCounter"></div>
+    </div>
+    <form id="formId">
+        <label for="eersteTerm" id="eersteTermLabel">Eerste term maximum:</label>
+            <input type="number" id="eersteTerm" value="10"/>
+        <label for="tweedeTerm" id="tweedeTermLabel">Tweede term maximum:</label>
+            <input type="number" id="tweedeTerm" value="10"/>
+        <label for="timerCheck" id="timerCheckLabel">Timer aanzetten?</label>
+            <input type="checkbox" id="timerCheck" checked/>
+        <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>   
+            <input type="number" id="timerAmount" value="60"/>
+        <button type="button" id="startKnop">Antwoord!</button>
+    </form>
+
 </body>
+<script src="./play.js"></script>
+
 </html>
