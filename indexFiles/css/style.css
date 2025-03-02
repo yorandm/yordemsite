@@ -29,6 +29,26 @@ td{
     
 }
 
+.error{
+    font-weight: bolder;
+    color:red;
+}
+
+.loading{
+  width: 200px;
+  height: 200px;
+  border: 5px solid var(--vtiBlauw);
+  border-top-color: var(--vtiBlauw); /* Blauwe kleur bovenaan */
+  color: var(--vtiBlauw);
+  border-radius: 50%;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 footer{
     position: static;
     bottom: 5px;
