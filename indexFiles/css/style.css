@@ -28,3 +28,8 @@ td{
     padding: 15px;
     
 }
+
+footer{
+    position: static;
+    bottom: 5px;
+}
