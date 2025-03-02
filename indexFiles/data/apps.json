@@ -10,5 +10,11 @@
         "uitleg": "Deze app bevat verschillende oefeningen voor 1B",
         "voor": ["1Ba", "1Bb", "1Bc", "1Bd", "1Be", "1Bf", "1Bg"],
         "url":"/wiskundespel"
+    },
+    {
+        "naam":"Vermenigvuldigingen",
+        "uitleg": "Deze app bevat een mechanisme om vermenigvuldigingen te oefenen naar eigen keuze. Van makkelijk tot moeilijk. Op tijd of niet, jij hebt de volledige controle. ",
+        "voor": ["iedereen"],
+        "url":"/vermenigvuldiging"
     }   
 ]
