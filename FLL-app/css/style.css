@@ -5,6 +5,7 @@
 body {
     background-color:  var(--vtiBlauw);/* rgba(0, 255, 255, 0.225);*/
     padding-bottom: 75px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
@@ -171,6 +172,11 @@ body {
     }
 }
 
+
+.error{
+    font-weight: bolder;
+    color:red;
+}
 
 .loading{
     margin-top: 150px;;
