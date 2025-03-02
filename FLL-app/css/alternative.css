@@ -3,9 +3,10 @@
 }
 
 body {
-    background-color:  var(--vtiBlauw);/* rgba(0, 255, 255, 0.225);*/
+    background-color: black; /* var(--vtiBlauw);/* rgba(0, 255, 255, 0.225);*/
     padding-bottom: 75px;
-
+    color: var(--vtiBlauw);
+font-size: larger;
 }
 
 .button{
@@ -31,7 +32,7 @@ body {
     grid-template-columns: 0.25fr 0.75fr;
     gap: 5px;
     padding: 10px;
-    border-bottom: 3px solid #000000;
+    border-bottom: var(--vtiBlauw) solid 3px;;
 }
 
 .checkbox {

@@ -1,0 +1,35 @@
+:root{
+    --vtiBlauw: #31b1c9
+}
+
+body{
+    justify-self: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title{
+    color:var(--vtiBlauw);
+}
+
+.inhoudstafel
+,tr, th, td{
+    border: 2px solid var(--vtiBlauw);
+    border-collapse: collapse;
+}
+
+td{
+    border-style: dotted;
+}
+th{
+    text-decoration: wavy;
+    text-transform: uppercase;
+}
+td{
+    padding: 15px;
+    
+}
+
+footer{
+    position: static;
+    bottom: 5px;
+}
