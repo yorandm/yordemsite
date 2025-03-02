@@ -20,6 +20,7 @@ const check = (e) => {
         correctCount++;
     }
     else {
+         document.getElementById("vraagLabel").innerHTML = `${currentEersteTerm} x ${currentTweedeTerm} = ${currentEersteTerm*currentTweedeTerm}`;
         document.getElementById("body").style = "background-color:red"
     }
     sleep(500).then(() => {
