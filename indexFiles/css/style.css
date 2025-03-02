@@ -4,7 +4,9 @@
 
 body{
     justify-self: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 .title{
     color:var(--vtiBlauw);
 }
