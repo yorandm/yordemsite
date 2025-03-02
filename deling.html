@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<style>
+    body {
+        font-size: xx-large;
+    }
+
+    .termen {
+        color: rgb(211, 29, 156);
+    }
+
+    .deler {
+        color: rgb(220, 119, 190);
+    }
+    
+    .som_Fout {
+        color: red;
+    }
+
+    .som_Juist {
+        color: rgb(248, 209, 16);
+    }
+
+    .uitleg_hidden {
+        visibility: hidden;
+    }
+
+    .uitleg_visible{
+       visibility: visible;
+    }
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    form *{
+        padding: 10px;
+    }
+
+    #submit{
+        background-color: olivedrab;
+        color:white;
+        font-size: large;
+        font-weight: bold;
+    }
+
+    #nummerId{
+        font-size: large;
+        font-weight: bold;
+        width:150px;
+    }
+
+    .formIsSubmitted{
+        font-weight:bold;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=w, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form" onsubmit="formsubmitted(event)">
+        <span class="termen" id="firstTerm"></span>
+        :
+        <span class="deler" id="secondTerm"></span>
+        =
+        <span id="answSpan" class="som_Fout">
+            <input id="nummerId" type="number" />
+            <input id="submit" type="submit" value="Indienen en ontdek!"/>
+        </span>
+    </form>
+
+    <ul  id="uitleglist" class="uitleg_hidden">
+        <dl>
+            <li>
+                <dt><span class="termen">deeltal</span></dt>
+                <dd>In dit voorbeeld is <span class="termen" id="eersteTermInUitleg"></span> het <span class="termen">deeltal</span>.
+                    <br />
+                    
+                </dd>
+            </li>
+            <li>
+                <dt><span class="deler">deler</span></dt>
+                <dd>In dit voorbeeld is <span class="deler" id="tweedeTermInUitleg"></span> het <span class="deler">deler</span>.
+                    <br />
+                    
+                </dd>
+            </li>
+            <li>
+                <dt><span class="som_Juist">quotiënt</span></dt>
+                <dd>
+                    In dit voorbeeld is het getal <span class="som_Juist" id="antwoordInUitleg"></span> wat we noemen de
+                    <span class="som_Juist">quotiënt</span>
+                    <br />
+                    Het <span class="som_Juist">quotiënt</span> verkrijg je als je het <span
+                        class="termen">deeltal</span> deelt met de <span class="deler">deler</span>.
+                        <br>
+                        <span class="termen">deeltal</span>:<span class="deler">deler</span>=<span class="som_Juist">quotiënt</span>
+
+                </dd>
+            </li>
+            <li>
+                <dt>Deling</dt>
+                <dd>Een deling is tot slot het geheel van het <span class="termen">deeltal</span>, de <span class="deler">deler</span> en  <span class="som_Juist">quotiënt</span>. 
+                Wanneer je een deling doet doe je het deeltal gedeelt door de deler om zo een quotiënt te krijgen.</dd>
+            </li>
+        </dl>
+
+    </ul>
+
+
+
+
+
+
+
+
+    <script>
+        let answSpan;
+        let answSpanInnerHTML;
+        let firstValue = Math.round(Math.random() * 10);
+        let secondValue = Math.round(Math.random() * 10);
+
+
+        const checkValue=()=>{
+            if(firstValue===0){
+                firstValue = Math.round(Math.random() * 10);
+                checkValue(); 
+            }
+            if(secondValue===0){
+                secondValue = Math.round(Math.random() * 10);
+                checkValue(); 
+            }
+            console.log("this");
+            console.log(firstValue);
+            console.log(secondValue);
+            return;
+        }
+
+        const init = () => {
+            checkValue();
+            //load object value
+            const eersteTerm = document.getElementById('firstTerm');
+            const tweedeTerm = document.getElementById('secondTerm');
+
+            answSpan = document.getElementById('answSpan');
+            answSpanInnerHTML = answSpan.innerHTML;
+
+
+            //set object value
+            eersteTerm.innerText = firstValue*secondValue;
+            tweedeTerm.innerText = secondValue;
+
+            //set uitleg
+            document.getElementById("eersteTermInUitleg").innerText = firstValue*secondValue;
+            document.getElementById("tweedeTermInUitleg").innerText = secondValue;
+            document.getElementById("antwoordInUitleg").innerText = firstValue;
+        }
+
+
+        const formsubmitted = (event) => {
+            event.preventDefault();
+
+            const answValue = Number(event.target.elements.nummerId.value);
+
+            if (firstValue === answValue) {
+                answSpanInnerHTML = firstValue;
+                answSpan.innerHTML = answSpanInnerHTML;
+                answSpan.className = "som_Juist";
+                document.getElementById("uitleglist").className="uitleg_visible";
+                document.getElementById("form").className = "formIsSubmitted";
+            }
+            else {
+
+                answSpan.innerHTML = `${answSpanInnerHTML} <br/> Probeer opnieuw!`;
+            }
+        };
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>First Lego League</title>
+</head>
+<body>
+    <h1>First Lego League</h1>
+    <label class="selectionPointset" for="selectionPointset">Punten telling</label>
+    <select id="selectionPointset">
+        <option value="FLL">Standaard</option>
+        <option value="VTI">Puntentelling VTI</option>
+    </select>
+    <br/>
+    <label for="names">Team:</label>
+    <input class="names" id="names" type="text" placeholder="namen, gescheiden met een komma"/>
+    <br/>
+    <button id="clearButton" class="button">Clear</button>
+    <br/>
+    <div id="challengeBody"></div>
+    <footer>Totaalscore is: <span id="totalScore"></span></footer>
+    <button id="generate-pdf">Generate PDF</button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="./js/generatePDF.js"></script>
+    <script src="./js/script.js"></script>
+
+</body>
+</html>
+

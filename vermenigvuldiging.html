@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+<style>
+    body {
+        font-size: xx-large;
+    }
+
+    .termen {
+        color: rgb(204, 0, 255);
+    }
+
+    .som_Fout {
+        color: red;
+    }
+
+    .som_Juist {
+        color: rgb(248, 209, 16);
+    }
+
+    .uitleg_hidden {
+        visibility: hidden;
+    }
+
+    .uitleg_visible{
+       visibility: visible;
+    }
+    form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    form *{
+        padding: 10px;
+    }
+
+    #submit{
+        background-color: olivedrab;
+        color:white;
+        font-size: large;
+        font-weight: bold;
+    }
+
+    #nummerId{
+        font-size: large;
+        font-weight: bold;
+        width:150px;
+    }
+
+    .formIsSubmitted{
+        font-weight:bold;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=w, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form" onsubmit="formsubmitted(event)">
+        <span class="termen" id="firstTerm"></span>
+        x
+        <span class="termen" id="secondTerm"></span>
+        =
+        <span id="answSpan" class="som_Fout">
+            <input id="nummerId" type="number" />
+            <input id="submit" type="submit" value="Indienen en ontdek!"/>
+        </span>
+    </form>
+
+    <ul  id="uitleglist" class="uitleg_hidden">
+        <dl>
+            <li>
+                <dt><span class="termen">Factoren</span></dt>
+                <dd>In dit voorbeeld zijn de <span class="termen" id="eersteTermInUitleg"></span> en <span
+                        class="termen" id="tweedeTermInUitleg"></span> de <span class="termen">factoren</span>.
+                    <br />
+                    Het zijn de factoren die je met elkaar vermenigvuldigd om tot een <span class="som_Juist">product</span> te komen.
+                    Je kan 2, 3 of meer factoren met elkaar vermenigvuldigen.
+                </dd>
+            </li>
+            <li>
+                <dt><span class="som_Juist">Product</span></dt>
+                <dd>
+                    In dit voorbeeld is het getal <span class="som_Juist" id="antwoordInUitleg"></span> wat we noemen het
+                    <span class="som_Juist">product</span>
+                    <br />
+                    Het <span class="som_Juist">product</span> verkrijg je als je twee of meerdere <span
+                        class="termen">factoren</span> met elkaar vermenigvuldigd.
+
+                </dd>
+            </li>
+            <li>
+                <dt>Vermenigvuldiging</dt>
+                <dd>Een vermenigvuldiging is tot slot het geheel van de <span class="termen">factoren</span> en het <span class="som_Juist">product</span>. 
+                Wanneer je een vermenigvuldiging doe je de factoren maal elkaar om een product te verkrijgen.</dd>
+            </li>
+        </dl>
+
+    </ul>
+
+
+
+
+
+
+
+
+    <script>
+        let answSpan;
+        let answSpanInnerHTML;
+        const firstValue = Math.round(Math.random() * 10);
+        let secondValue = Math.round(Math.random() * 10);
+
+        const init = () => {
+            //load object value
+            const eersteTerm = document.getElementById('firstTerm');
+            const tweedeTerm = document.getElementById('secondTerm');
+
+            answSpan = document.getElementById('answSpan');
+            answSpanInnerHTML = answSpan.innerHTML;
+
+
+            //set object value
+            eersteTerm.innerText = firstValue;
+            tweedeTerm.innerText = secondValue;
+
+            //set uitleg
+            document.getElementById("eersteTermInUitleg").innerText = firstValue;
+            document.getElementById("tweedeTermInUitleg").innerText = secondValue;
+            document.getElementById("antwoordInUitleg").innerText = firstValue * secondValue;
+        }
+
+
+        const formsubmitted = (event) => {
+            event.preventDefault();
+
+            const answValue = Number(event.target.elements.nummerId.value);
+
+            if (firstValue * secondValue === answValue) {
+                answSpanInnerHTML = firstValue * secondValue;
+                answSpan.innerHTML = answSpanInnerHTML;
+                answSpan.className = "som_Juist";
+                document.getElementById("uitleglist").className="uitleg_visible";
+                document.getElementById("form").className = "formIsSubmitted";
+            }
+            else {
+
+                answSpan.innerHTML = `${answSpanInnerHTML} <br/> Probeer opnieuw!`;
+            }
+        };
+
+        window.onload = init;
+    </script>
+</body>
+
+</html>

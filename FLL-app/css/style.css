@@ -1,0 +1,166 @@
+body {
+    background-color: rgba(0, 255, 255, 0.225);
+    padding-bottom: 75px;
+}
+
+.button{
+    margin: 5px;
+    padding: 5px;
+    background-color: bisque;
+    border-radius: 2px;
+    border: black solid 1px;
+}
+
+
+.names{
+    min-width: 250px;
+    margin:10px;
+}
+.selectionPointset{
+    padding: 10px 10px 10px 0px;
+}
+.challenge {
+    /* background-color: green; */
+    display: grid;
+    justify-items: center;
+    grid-template-columns: 0.25fr 0.75fr;
+    gap: 5px;
+    padding: 10px;
+    border-bottom: 3px solid #000000;
+}
+
+.checkbox {
+    justify-self: center;
+    align-self: center;
+    scale: 2;
+}
+
+.missionImg {
+    max-width: 100%;
+    max-height: 20vh;
+    height: auto;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-row: span;
+}
+
+.missionTitle {
+    grid-column-start: 2;
+    /* background-color:blue; */
+    justify-self: flex-start;
+    align-self: top;
+    margin-top: 0px;
+}
+
+.opdrachten {
+    width: 100%;
+    justify-self: start;
+    display: grid;
+    align-items: center;
+    /* background-color: yellow; */
+}
+
+.opdracht {
+    justify-self: start;
+    grid-column-start: 2;
+    padding: 10px;
+    grid-column-start: 1;
+}
+
+.buttondiv {
+    grid-column-start: 2;
+    justify-self: end;
+    margin-right: 22px;
+}
+
+.numberdiv {
+    grid-column-start: 2;
+    justify-self: end;
+}
+
+.numberInput:disabled {
+    all: unset;
+    padding-right: 0;
+    width: 10px;
+}
+
+.numberInput {
+    width: 5px;
+    text-align: center;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+footer {
+    font-size: large;
+    padding: 20px;
+    color: white;
+    background-color: black;
+    position: fixed;
+    right: 10px;
+    bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+@media only screen and (max-width: 450px) {
+.missionImg {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    grid-row-end: 1;
+}
+
+.missionTitle {
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+}
+
+.opdrachten {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+}
+
+#generate-pdf{
+    all:unset;
+    font-size: large;
+    padding: 15px;
+    color: white;
+    background-color: black;
+    position: fixed;
+    left: 10px;
+    bottom: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+@media only screen and (min-width: 1330px) {
+body {
+    max-width: 1330px;
+    margin: auto;
+}
+}
+
+@media print {
+    /* All your print styles go here */
+    footer {
+        font-size: large;
+        padding: 20px;
+        color: black;
+        position: unset;
+    }
+    .minusButton,
+    .plusButton{
+       visibility: hidden; 
+    }
+    .names{
+        all:unset;
+        width:100%;
+    }
+  }
