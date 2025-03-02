@@ -8,23 +8,36 @@ async function populate() {
         "/indexFiles/data/apps.json";
     const request = new Request(requestURL);
 
-    const response = await fetch(request);
-    appList = await response.json();
+    try {
+        const response = await fetch(request);
+
+        if (!response.ok) {
+            throw new Error(`HTTP-fout! Status: ${response.status}`)
+        }
+
+        appList = await response.json();
+    } catch (error) {
+        console.error("Fout bij ophalen van data:", error);
+        document.getElementById("tableBody").innerHTML = `
+        <tr>
+            <td colspan="3" class="error">Er heeft zich een probleem voorgedaan bij het ophalen of renderen van de data. Probeer opnieuw. Indien het probleem zich blijft voordoen contacteer mij!</td>
+        </tr>
+        `
+    }
 
 }
 
-const getListOfClasses = (klassenLijst) =>{
-    let lijst="";
-    for(const klas of klassenLijst){
+const getListOfClasses = (klassenLijst) => {
+    let lijst = "";
+    for (const klas of klassenLijst) {
         lijst += `<li>${klas}</li>`
     }
     return lijst;
 }
 
 const fillScreen = () => {
-    document.getElementById("tableBody").innerHTML = "";
-    let tableContent = ""; 
-    for  (const app of appList) {
+    let tableContent = "";
+    for (const app of appList) {
         tableContent += `
             <tr>
                 <td><a href="${app.url}">${app.naam}</a></td>
@@ -37,13 +50,22 @@ const fillScreen = () => {
             </tr>
         `
     }
-    document.getElementById("tableBody").innerHTML += tableContent;
+    document.getElementById("tableBody").innerHTML = tableContent;
 }
 
 
 const init = async () => {
-     await populate();
-    fillScreen();
+    await populate();
+    try {
+        fillScreen();
+    } catch (error) {
+        console.error("Fout bij renderen van data:", error);
+        document.getElementById("tableBody").innerHTML = `
+    <tr>
+        <td colspan="3" class="error">Er heeft zich een probleem voorgedaan bij het ophalen of renderen van de data. Probeer opnieuw. Indien het probleem zich blijft voordoen contacteer mij!</td>
+    </tr>
+    `
+    }
 }
 
 
