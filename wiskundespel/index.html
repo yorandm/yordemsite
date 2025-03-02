@@ -8,7 +8,7 @@
 <body>
     <h1>Welkom!</h1>
     <p>Geef om te beginnen het aantal spelers door en de namen. Dit kan je doen door onderstaand formulier in te vullen.</p>
-    <form>
+    <form id="formId">
         <label>
             Aantal spelers:
             <input type="number" placeholder="2" min="2" max="12" id="numberOfPlayers"/>
@@ -17,6 +17,7 @@
 
         </div>
         <button type="button" onclick="window.location.href='play'" target="_self">Begin!</button>
+        <button type="button" id="resetId" target="_self">Reset!</button>
     </form>
 <script src="./script.js"></script>
 </body>
