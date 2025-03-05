@@ -9,6 +9,7 @@ let timers;
 let scores;
 let uitgeschakeld;
 let totalTime = 60; //in seconds
+let updated = false;
 
 async function populate() {
     const requestURL =
@@ -37,10 +38,12 @@ const endGameForEveryone = () => {
     document.getElementById("body").innerHTML = `<h1 id="einde"> Game over!</h1>`;
     sleep(500).then(() => {
         document.getElementById("body").innerHTML = `
+        <div class="mainContainer">
         <div id="infoContainer">
             <div id="score"><ul>${getTimers()}</ul></div>
         </div>
-        <button type="button" onclick="window.location.href='..'" id="reset">Nog een keer?</button>
+        <button class="goButton" type="button" onclick="window.location.href='..'" id="reset">Nog een keer?</button>
+        </div>
         `
     });
 }
@@ -60,13 +63,16 @@ const endGameFor = (deadPlayer) => {
 
 const startTimer = async() => {
     try {
-
-
         while (timers[currentPlayer] > -2) {
             await sleep(1000).then(() => {
                 document.getElementById("timer").innerHTML = `<ul> ${getTimers()}</ul>Tijd resterend: ${timers[currentPlayer]}`;
             });
-            timers[currentPlayer]--;
+            if (!updated) {
+                timers[currentPlayer]--;
+
+            } else {
+                updated = false;
+            }
             if (timers[currentPlayer] <= 0) {
                 endGameFor(currentPlayer) ? nextSequence() : endGameForEveryone();
             }
@@ -94,7 +100,7 @@ const nextPlayer = () => {
     document.getElementById("body").style = "background-color:none";
     document.getElementById("antwoord").value = "";
     currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
-
+    updated = true;
     if (uitgeschakeld[currentPlayer]) {
         currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
     }
@@ -106,7 +112,6 @@ const nextSequence = () => {
     nextPlayer();
     begin();
 }
-
 
 const checkAntw = (e) => {
     e.preventDefault();
