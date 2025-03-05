@@ -2,10 +2,7 @@ let numberOfPlayers = 2;
 let players = [];
 
 const updatePlayerNames = (event) => {
-    console.log(event.target.name.split("speler")[1]);
-    console.log(document.getElementById(event.target.name).value);
     players[event.target.name.split("speler")[1] - 1] = document.getElementById(event.target.name).value
-    console.log(event);
     sessionStorage.setItem("playerName", JSON.stringify(players));
 }
 
@@ -32,9 +29,15 @@ const onNumberOfPlayersChange = () => {
 
 }
 
+const onTimerChange = () => {
+    timer = Number(document.getElementById('timerAmount').value);
+    sessionStorage.setItem("totalTimer", timer);
+}
+
 const reset = () => {
     numberOfPlayers = 2;
     sessionStorage.setItem("numberOfPlayers", numberOfPlayers);
+    sessionStorage.setItem("totalTimer", 60);
     players = [];
     sessionStorage.setItem("playerName", JSON.stringify(players));
     document.getElementById("formId").innerHTML = `
@@ -54,6 +57,7 @@ const reset = () => {
 const init = () => {
     document.getElementById("numberOfPlayers").onchange = onNumberOfPlayersChange;
     document.getElementById("resetId").onclick = reset;
+    document.getElementById("timerAmount").onchange = onTimerChange;
     numberOfPlayers = sessionStorage.getItem("numberOfPlayers") ? sessionStorage.getItem("numberOfPlayers") : 2;
     players = sessionStorage.getItem("playerName") ? JSON.parse(sessionStorage.getItem("playerName")) : [];
     updatePlayerNameInput();

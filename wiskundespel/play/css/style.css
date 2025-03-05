@@ -1,0 +1,15 @@
+/* .alive {
+    color: green;
+    font-weight: bolder;
+    text-decoration: underline;
+} */
+
+.dead {
+    text-decoration: line-through;
+    color: red;
+}
+
+.active {
+    font-size: x-large;
+    font-weight: bolder;
+}

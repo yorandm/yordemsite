@@ -7,8 +7,8 @@ let huidigeVraag;
 let vraagIndex;
 let timers;
 let scores;
-let uitgeschakeld;
-let totalTime = 60; //in seconds
+// let uitgeschakeld;
+
 
 async function populate() {
     const requestURL =
@@ -17,7 +17,6 @@ async function populate() {
 
     const response = await fetch(request);
     vragen = await response.json();
-
 
 }
 
@@ -28,52 +27,24 @@ function sleep(ms) {
 const getTimers = () => {
     let list = "";
     for (let index = 0; index < numberOfPlayers; index++) {
-        list += `<li class="${index===currentPlayer?"active":"notActive"} ${uitgeschakeld[index]?"dead":"alive"}">Tijd van ${players[index]}: ${timers[index]}   ||| Score: ${scores[index]}</li>`
+        list += `<li class=${index===currentPlayer?"active":"notActive"}>Tijd van ${players[index]}: ${timers[index]}   ||| Score: ${scores[index]}</li>`
     }
     return list;
 }
 
-const endGameForEveryone = () => {
-    document.getElementById("body").innerHTML = `<h1 id="einde"> Game over!</h1>`;
-    sleep(500).then(() => {
-        document.getElementById("body").innerHTML = `
-        <div id="infoContainer">
-            <div id="score"><ul>${getTimers()}</ul></div>
-        </div>
-        <button type="button" onclick="window.location.href='..'" id="reset">Nog een keer?</button>
-        `
-    });
-}
-
-const endGameFor = (deadPlayer) => {
-    uitgeschakeld[deadPlayer] = true;
-    let count = 0;
-    for (const player of uitgeschakeld) {
-        if (!player) count++;
-    }
-    if (count === 1) {
-        endGameForEveryone();
-    }
-    return count !== 1;
-
-}
+// const endGameFor = (deadPlayer) => {
+//     uitgeschakeld[deadPlayer] = true;
+// }
 
 const startTimer = async() => {
-    try {
-
-
-        while (timers[currentPlayer] > -2) {
-            await sleep(1000).then(() => {
-                document.getElementById("timer").innerHTML = `<ul> ${getTimers()}</ul>Tijd resterend: ${timers[currentPlayer]}`;
-            });
-            timers[currentPlayer]--;
-            if (timers[currentPlayer] <= 0) {
-                endGameFor(currentPlayer) ? nextSequence() : endGameForEveryone();
-            }
-        }
-        endGameForEveryone();
-    } catch (e) {
-
+    while (timers[currentPlayer] > 0) {
+        await sleep(1000).then(() => {
+            document.getElementById("timer").innerHTML = `<ul> ${getTimers()}</ul>Tijd resterend: ${timers[currentPlayer]}`;
+        });
+        timers[currentPlayer]--;
+        // if (timers[currentPlayer] <= 0) {
+        // endGameFor(currentPlayer);
+        // }
     }
 }
 
@@ -94,10 +65,10 @@ const nextPlayer = () => {
     document.getElementById("body").style = "background-color:none";
     document.getElementById("antwoord").value = "";
     currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
-
-    if (uitgeschakeld[currentPlayer]) {
-        currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
-    }
+    // console.log(currentPlayer, uitgeschakeld[currentPlayer]);
+    // if (uitgeschakeld[currentPlayer]) {
+    //     currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
+    // }
 
 }
 
@@ -128,16 +99,17 @@ const checkAntw = (e) => {
 const init = async() => {
     await populate();
 
-    totalTime = sessionStorage.getItem("totalTimer") ? Number(sessionStorage.getItem("totalTimer")) : 60;
+
     numberOfPlayers = sessionStorage.getItem("numberOfPlayers") ? Number(sessionStorage.getItem("numberOfPlayers")) : 2;
     players = sessionStorage.getItem("playerName") ? JSON.parse(sessionStorage.getItem("playerName")) : [];
+    console.log("dit zo", sessionStorage.getItem("playerName") ? "ja" : "nee");
 
-    timers = new Array(Number(numberOfPlayers)).fill(totalTime);
+    timers = new Array(Number(numberOfPlayers)).fill(60);
     scores = new Array(numberOfPlayers).fill(0);
     uitgeschakeld = new Array(numberOfPlayers).fill(false);
 
-    currentPlayer = Math.floor(Math.random() * (numberOfPlayers));
 
+    console.log(currentPlayer);
     document.getElementById("formId").onsubmit = checkAntw;
     document.getElementById("antwoordknop").onclick = checkAntw;
 
