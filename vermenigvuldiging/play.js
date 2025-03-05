@@ -18,9 +18,8 @@ const check = (e) => {
     if (userAnsw === currentEersteTerm * currentTweedeTerm) {
         document.getElementById("body").style = "background-color:green"
         correctCount++;
-    }
-    else {
-         document.getElementById("vraagLabel").innerHTML = `${currentEersteTerm} x ${currentTweedeTerm} = ${currentEersteTerm*currentTweedeTerm}`;
+    } else {
+        document.getElementById("vraagLabel").innerHTML = `${currentEersteTerm} x ${currentTweedeTerm} = ${currentEersteTerm*currentTweedeTerm}`;
         document.getElementById("body").style = "background-color:red"
     }
     sleep(500).then(() => {
@@ -40,22 +39,24 @@ const nextQuestion = () => {
 
 const reset = () => {
     document.getElementById("body").innerHTML = `
-  <div id="infoContainer">
-        <div id="timer"></div>
-        <div id="score"></div>
-        <div id="totalCounter"></div>
+  <div class="mainContainer">
+        <div id="infoContainer">
+            <div id="timer"></div>
+            <div id="score"></div>
+            <div id="totalCounter"></div>
+        </div>
+        <form id="formId">
+            <label for="eersteTerm" id="eersteTermLabel">Eerste term maximum:</label>
+            <input type="number" id="eersteTerm" value="10" />
+            <label for="tweedeTerm" id="tweedeTermLabel">Tweede term maximum:</label>
+            <input type="number" id="tweedeTerm" value="10" />
+            <label for="timerCheck" id="timerCheckLabel">Timer aanzetten?</label>
+            <input type="checkbox" id="timerCheck" checked />
+            <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>
+            <input type="number" id="timerAmount" value="60" />
+            <button type="button" class="goButton" id="startKnop">START!</button>
+        </form>
     </div>
-    <form id="formId">
-        <label for="eersteTerm" id="eersteTermLabel">Eerste term maximum:</label>
-            <input type="number" id="eersteTerm" value="10"/>
-        <label for="tweedeTerm" id="tweedeTermLabel">Tweede term maximum:</label>
-            <input type="number" id="tweedeTerm" value="10"/>
-        <label for="timerCheck" id="timerCheckLabel">Timer aanzetten?</label>
-            <input type="checkbox" id="timerCheck" checked/>
-        <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>   
-            <input type="number" id="timerAmount" value="60"/>
-        <button type="button" id="startKnop">Antwoord!</button>
-    </form>
  `
     eersteTerm = 0;
     tweedeTerm = 10;
@@ -74,12 +75,14 @@ const endGame = () => {
     document.getElementById("body").innerHTML = `<h1 id="einde"> Tijd is op!</h1>`;
     sleep(500).then(() => {
         document.getElementById("body").innerHTML = `
+       <div class="mainContainer">
         <div id="infoContainer">
             <div id="score">Totaal Juist: ${correctCount}</div>
             <div id="totalCounter">Totaal beantwoord: ${counter}</div>
             <div id="percentage">Percentage juist: ${((correctCount / counter) * 100).toFixed(2)}%</div>
         </div>
-        <button type="button" id="reset">Nog een keer?</button>
+        <button class="goButton" type="button" id="reset">Nog een keer?</button>
+        </div>
         `
         document.getElementById("reset").onclick = reset;
     });
@@ -87,7 +90,7 @@ const endGame = () => {
 
 }
 
-const startTimer = async () => {
+const startTimer = async() => {
     while (timerAmount > 0) {
         await sleep(1000).then(() => {
             document.getElementById("timer").innerHTML = `Tijd resterend: ${timerAmount - 1}`;
@@ -97,14 +100,14 @@ const startTimer = async () => {
     endGame();
 }
 
-const setUpPlayField = async () => {
+const setUpPlayField = async() => {
     document.getElementById("totalCounter").innerHTML = `Totaal antwoorden: ${counter}`;
     document.getElementById("score").innerHTML = `Totaal Juist: ${correctCount}`;
     if (timer) document.getElementById("timer").innerHTML = `Totaal aantal seconden over: ${timerAmount}`;
     document.getElementById("formId").innerHTML = `
         <label for="antwoord" id="vraagLabel"> x  = </label>
         <input id="antwoord" type="number" autocomplete="off"/>
-        <button type="submit" id="antwoordknop">Antwoord!</button>
+        <button type="submit" class="goButton" id="antwoordknop">Antwoord!</button>
     `
     document.getElementById("formId").onsubmit = check;
     document.getElementById("antwoordknop").onclick = check;
@@ -129,7 +132,7 @@ const verzamelGegevens = (e) => {
 
 }
 
-const init = async () => {
+const init = async() => {
     document.getElementById("formId").onsubmit = verzamelGegevens;
     document.getElementById("startKnop").onclick = verzamelGegevens;
 }

@@ -12,4 +12,5 @@
 .active {
     font-size: x-large;
     font-weight: bolder;
+    color: var(--vtiBlauw);
 }

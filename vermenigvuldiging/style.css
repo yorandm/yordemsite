@@ -1,35 +1,37 @@
-body{
+body {
     display: flex;
-    justify-content: center; /* Horizontaal centreren */
-    align-items: center; /* Verticaal centreren */
-    height: 90vh; /* Hele viewport hoogte */
+    justify-content: center;
+    /* Horizontaal centreren */
+    align-items: center;
+    /* Verticaal centreren */
+    height: 90vh;
+    /* Hele viewport hoogte */
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: larger;
     flex-direction: column;
 }
 
-#formId{
+#formId {
     display: grid;
     grid-template-columns: 1fr 0.5fr;
     margin-top: 5px;
-    
+    padding: 10px;
 }
 
-#formId > *{
+#formId>* {
     margin: 2px;
 }
 
-#infoContainer{
-   margin: 50px;
+#infoContainer {
+    margin: 50px;
 }
 
-#startKnop, 
-#antwoordknop{
-grid-column: 2;
+#startKnop,
+#antwoordknop {
+    grid-column: 2;
+    margin-top: 10px;
 }
 
-#vraagLabel{
+#vraagLabel {
     font-size: xx-large;
-
 }
-

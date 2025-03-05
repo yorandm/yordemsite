@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="nl-BE">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/indexFiles/css/style.css">
     <link rel="stylesheet" href="./style.css">
     <title>Vermenigvuldigingen</title>
 </head>
+
 <body id="body">
-    <div id="infoContainer">
-        <div id="timer"></div>
-        <div id="score"></div>
-        <div id="totalCounter"></div>
+    <div class="mainContainer">
+        <h1 class="title">Welkom bij de vermenigvuldigingen!</h1>
+        <p>Probeer een zo hoog mogelijke score te behalen in binnen de tijd!</p>
+        <div id="infoContainer">
+            <div id="timer"></div>
+            <div id="score"></div>
+            <div id="totalCounter"></div>
+        </div>
+        <form id="formId">
+            <label for="eersteTerm" id="eersteTermLabel">Eerste term maximum:</label>
+            <input type="number" id="eersteTerm" value="10" />
+            <label for="tweedeTerm" id="tweedeTermLabel">Tweede term maximum:</label>
+            <input type="number" id="tweedeTerm" value="10" />
+            <label for="timerCheck" id="timerCheckLabel">Timer aanzetten?</label>
+            <input type="checkbox" id="timerCheck" checked />
+            <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>
+            <input type="number" id="timerAmount" value="60" />
+            <button type="button" class="goButton" id="startKnop">START!</button>
+        </form>
     </div>
-    <form id="formId">
-        <label for="eersteTerm" id="eersteTermLabel">Eerste term maximum:</label>
-            <input type="number" id="eersteTerm" value="10"/>
-        <label for="tweedeTerm" id="tweedeTermLabel">Tweede term maximum:</label>
-            <input type="number" id="tweedeTerm" value="10"/>
-        <label for="timerCheck" id="timerCheckLabel">Timer aanzetten?</label>
-            <input type="checkbox" id="timerCheck" checked/>
-        <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>   
-            <input type="number" id="timerAmount" value="60"/>
-        <button type="button" id="startKnop">Antwoord!</button>
-    </form>
 
 </body>
 <script src="./play.js"></script>

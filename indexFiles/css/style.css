@@ -1,56 +1,106 @@
-:root{
+:root {
     --vtiBlauw: #31b1c9
 }
 
-body{
-   
+body {
     justify-self: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.title{
-    color:var(--vtiBlauw);
+.title {
+    color: var(--vtiBlauw);
 }
 
-.inhoudstafel
-,tr, th, td{
+.inhoudstafel,
+tr,
+th,
+td {
     border: 2px solid var(--vtiBlauw);
     border-collapse: collapse;
 }
 
-td{
+td {
     border-style: dotted;
 }
-th{
+
+th {
     text-decoration: wavy;
     text-transform: uppercase;
 }
-td{
+
+td {
     padding: 15px;
-    
 }
 
-.error{
+.error {
     font-weight: bolder;
-    color:red;
+    color: red;
 }
 
-.loading{
-  width: 200px;
-  height: 200px;
-  border: 5px solid var(--vtiBlauw);
-  border-top-color: var(--vtiBlauw); /* Blauwe kleur bovenaan */
-  color: var(--vtiBlauw);
-  border-radius: 50%;
-  animation: spin 1.5s linear infinite;
+.loading {
+    width: 200px;
+    height: 200px;
+    border: 5px solid var(--vtiBlauw);
+    border-top-color: var(--vtiBlauw);
+    /* Blauwe kleur bovenaan */
+    color: var(--vtiBlauw);
+    border-radius: 50%;
+    animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-footer{
+footer {
     position: static;
     bottom: 5px;
+}
+
+.mainContainer {
+    max-width: 1500px;
+}
+
+.mainContainer .title {
+    justify-items: center;
+}
+
+.mainContainer form {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--vtiBlauw);
+    margin: 10px;
+}
+
+.mainContainer form * {
+    margin: 6px;
+}
+
+.mainContainer p {
+    max-width: 80%
+}
+
+.mainContainer button {
+    height: 50px;
+    min-width: 50px;
+    margin: 5px;
+}
+
+.resetButton {
+    background-color: rgb(234, 97, 97);
+    color: white;
+    font-size: large
+}
+
+.goButton {
+    background-color: var(--vtiBlauw);
+    color: white;
+    font-weight: bolder;
+    text-decoration: solid;
+    font-size: x-large;
 }

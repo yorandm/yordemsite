@@ -4,29 +4,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/indexFiles/css/style.css">
+
     <title>Wiskunde game!</title>
 </head>
 
 <body>
-    <h1>Welkom!</h1>
-    <p>Geef om te beginnen het aantal spelers door en de namen. Dit kan je doen door onderstaand formulier in te vullen.
-    </p>
-    <P>Tijdens het spel is het de bedoeling zo lang mogelijk te blijven spelen. Per juist antwoord krijg je 5 seconden extra. Maar let op! Per fout antwoord gaan er 5 seconden af! Je antwoord om de beurt. De persoon die op 0 seconden komt is automatisch
-        uitgeschakeld!
-    </P>
-    <form id="formId">
-        <label>
-            Aantal spelers:
-            <input type="number" placeholder="2" min="2" max="12" id="numberOfPlayers" />
-        </label>
-        <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:</label>
-        <input type="number" id="timerAmount" value="60" />
-        <div id="playerNames">
+    <div class="mainContainer">
+        <h1 class="title">Welkom!</h1>
+        <p>Geef om te beginnen het aantal spelers door en de namen. Dit kan je doen door onderstaand formulier in te vullen.
+        </p>
+        <P>Tijdens het spel is het de bedoeling zo lang mogelijk te blijven spelen. Per juist antwoord krijg je 5 seconden extra. Maar let op! Per fout antwoord gaan er 5 seconden af! Je antwoord om de beurt. De persoon die op 0 seconden komt is automatisch
+            uitgeschakeld!
+        </P>
 
-        </div>
-        <button type="button" onclick="window.location.href='play'" target="_self">Begin!</button>
-        <button type="button" id="resetId" target="_self">Reset!</button>
-    </form>
+        <form id="formId">
+            <label>
+                Aantal spelers:
+                <input type="number" placeholder="2" min="2" max="12" id="numberOfPlayers" />
+            </label>
+            <label for="timerAmount" id="timerAmountLabel">Tijd van timer in seconden:
+                <input type="number" id="timerAmount" value="60" />
+            </label>
+            <div id="playerNames">
+
+            </div>
+            <div class="buttons">
+                <button type="button" class="resetButton" id="resetId" target="_self">Reset!</button>
+                <button type="button" class="goButton" onclick="window.location.href='play'" target="_self">Begin!</button>
+            </div>
+        </form>
+    </div>
     <script src="./script.js"></script>
 </body>
 

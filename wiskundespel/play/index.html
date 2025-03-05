@@ -4,23 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/indexFiles/css/style.css">
     <link rel="stylesheet" href="./css/style.css">
-
     <title>Play Wiskunde!</title>
 </head>
 
 <body id="body">
-    <h1 id="title"></h1>
-    <p>Geef zo snel mogelijk het juiste antwoord!</p>
-    <div id="timer"></div>
-    <div id="playersInfo"></div>
-    <form id="formId">
-        <label for="antwoord" id="vraagLabel"> </label>
+    <div class="mainContainer">
 
-        <input type="text" id="antwoord" autocomplete="off" />
-
-        <button type="button" id="antwoordknop">Antwoord!</button>
-    </form>
+        <h1 id="title" class="title"></h1>
+        <p>Geef zo snel mogelijk het juiste antwoord!</p>
+        <div id="timer"></div>
+        <div id="playersInfo"></div>
+        <form id="formId">
+            <label for="antwoord" id="vraagLabel"> </label>
+            <input type="text" id="antwoord" autocomplete="off" />
+            <button type="button" id="antwoordknop" class="goButton">Antwoord!</button>
+        </form>
+    </div>
     <script src="./script.js"></script>
 </body>
 
