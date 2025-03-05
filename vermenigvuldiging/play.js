@@ -34,7 +34,8 @@ const nextQuestion = () => {
     document.getElementById("antwoord").value = "";
     currentEersteTerm = Math.floor(Math.random() * (eersteTerm + 1));
     currentTweedeTerm = Math.floor(Math.random() * (tweedeTerm + 1));
-    document.getElementById("vraagLabel").innerHTML = `${currentEersteTerm} x ${currentTweedeTerm} =`
+    document.getElementById("vraagLabel").innerHTML = `${currentEersteTerm} x ${currentTweedeTerm} =`;
+    document.getElementById("antwoord").focus();
 }
 
 const reset = () => {

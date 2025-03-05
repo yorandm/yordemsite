@@ -40,6 +40,7 @@ const begin = () => {
 const nextPlayer = () => {
     document.getElementById("body").style = "background-color:none";
     document.getElementById("antwoord").value = "";
+    document.getElementById("antwoord").focus();
     currentPlayer = (currentPlayer + 1) % numberOfPlayers === 0 ? 0 : (currentPlayer + 1);
 
 }
