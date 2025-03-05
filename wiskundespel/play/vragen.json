@@ -1,302 +1,301 @@
-[
-    {
+[{
         "id": "1",
         "vraag": "5+5",
         "antwoord": "10",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "2",
         "vraag": "5x5",
         "antwoord": "25",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "3",
         "vraag": "5-5",
         "antwoord": "0",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "4",
         "vraag": "25:5",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "5",
         "vraag": "10+15",
         "antwoord": "25",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "6",
         "vraag": "12x3",
         "antwoord": "36",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "7",
         "vraag": "20-4",
         "antwoord": "16",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "8",
         "vraag": "30:6",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "9",
         "vraag": "7+8",
         "antwoord": "15",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "10",
         "vraag": "9x9",
         "antwoord": "81",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "11",
         "vraag": "14+6",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "12",
         "vraag": "8x7",
         "antwoord": "56",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "13",
         "vraag": "18-9",
         "antwoord": "9",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "14",
         "vraag": "40:8",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "15",
         "vraag": "11+9",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "16",
         "vraag": "6x6",
         "antwoord": "36",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "17",
         "vraag": "15-5",
         "antwoord": "10",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "18",
         "vraag": "50:10",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "19",
         "vraag": "13+7",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "20",
         "vraag": "4x8",
         "antwoord": "32",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "21",
         "vraag": "22-12",
         "antwoord": "10",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "22",
         "vraag": "45:9",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "23",
         "vraag": "16+4",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "24",
         "vraag": "7x7",
         "antwoord": "49",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "25",
         "vraag": "30-10",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "26",
         "vraag": "60:12",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "27",
         "vraag": "19+1",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "28",
         "vraag": "5x4",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "29",
         "vraag": "25-5",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "30",
         "vraag": "35:7",
         "antwoord": "5",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "31",
         "vraag": "21+9",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "32",
         "vraag": "3x10",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "33",
         "vraag": "40-10",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "34",
         "vraag": "90:3",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "35",
         "vraag": "17+13",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "36",
         "vraag": "6x5",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "37",
         "vraag": "50-20",
         "antwoord": "30",
-        "type":"classic"            
+        "type": "classic"
     },
     {
         "id": "38",
         "vraag": "60:2",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "39",
         "vraag": "23+7",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "40",
         "vraag": "4x9",
         "antwoord": "36",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "41",
         "vraag": "28-8",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "42",
         "vraag": "48:6",
         "antwoord": "8",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "43",
         "vraag": "15+15",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "44",
         "vraag": "7x8",
         "antwoord": "56",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "45",
         "vraag": "32-12",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "46",
         "vraag": "54:9",
         "antwoord": "6",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "47",
         "vraag": "18+12",
         "antwoord": "30",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "48",
         "vraag": "5x7",
         "antwoord": "35",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "49",
         "vraag": "40-20",
         "antwoord": "20",
-        "type":"classic"
+        "type": "classic"
     },
     {
         "id": "50",
         "vraag": "70:10",
         "antwoord": "7",
-        "type":"classic"
+        "type": "classic"
     }
 ]
