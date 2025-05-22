@@ -1,0 +1,696 @@
+[
+    {
+        "id": "1",
+        "vraag": "1 cl",
+        "eindeenheid":"ml",
+        "antwoord": "10",
+        "type": "classic"
+    },
+    {
+        "id": "2",
+        "vraag": "3 dl",
+        "eindeenheid":"ml",
+        "antwoord": "300",
+        "type": "classic"
+    },
+    {
+        "id": "3",
+        "vraag": "14 l",
+        "eindeenheid":"dl",
+        "antwoord": "140",
+        "type": "classic"
+    },
+    {
+        "id": "4",
+        "vraag": "122 cl",
+        "eindeenheid":"ml",
+        "antwoord": "1220",
+        "type": "classic"
+    },
+    {
+        "id": "5",
+        "vraag": "7 l",
+        "eindeenheid":"cl",
+        "antwoord": "700",
+        "type": "classic"
+    },
+    {
+        "id": "6",
+        "vraag": "56 dl",
+        "eindeenheid":"ml",
+        "antwoord": "5600",
+        "type": "classic"
+    },
+    {
+        "id": "7",
+        "vraag": "300 cl",
+        "eindeenheid":"l",
+        "antwoord": "3",
+        "type": "classic"
+    },
+    {
+        "id": "8",
+        "vraag": "5000 ml",
+        "eindeenheid":"cl",
+        "antwoord": "500",
+        "type": "classic"
+    },
+    {
+        "id": "9",
+        "vraag": "3000 dl",
+        "eindeenheid":"l",
+        "antwoord": "300",
+        "type": "classic"
+    },
+    {
+        "id": "10",
+        "vraag": "22 000 ml",
+        "eindeenheid":"dl",
+        "antwoord": "220",
+        "type": "classic"
+    },
+    {
+        "id": "11",
+        "vraag": "57 000 cl",
+        "eindeenheid":"l",
+        "antwoord": "570",
+        "type": "classic"
+    },
+    {
+        "id": "12",
+        "vraag": "1,25 l",
+        "eindeenheid":"dl",
+        "antwoord": "12,5",
+        "type": "classic"
+    },
+    {
+        "id": "13",
+        "vraag": "3,05 dl",
+        "eindeenheid":"ml",
+        "antwoord": "305",
+        "type": "classic"
+    },
+    {
+        "id": "14",
+        "vraag": "0,08 cl",
+        "eindeenheid":"ml",
+        "antwoord": "0,8",
+        "type": "classic"
+    },
+    {
+        "id": "15",
+        "vraag": "25,6 l",
+        "eindeenheid":"cl",
+        "antwoord": "2560",
+        "type": "classic"
+    },
+    {
+        "id": "16",
+        "vraag": "0,852 dl",
+        "eindeenheid":"cl",
+        "antwoord": "8,52",
+        "type": "classic"
+    },
+    {
+        "id": "17",
+        "vraag": "42 ml",
+        "eindeenheid":"cl",
+        "antwoord": "4,2",
+        "type": "classic"
+    },
+    {
+        "id": "18",
+        "vraag": "75,3 cl",
+        "eindeenheid":"l",
+        "antwoord": "0,753",
+        "type": "classic"
+    },
+    {
+        "id": "19",
+        "vraag": "522 dl",
+        "eindeenheid":"l",
+        "antwoord": "52,2",
+        "type": "classic"
+    },
+    {
+        "id": "20",
+        "vraag": "42,8 cl",
+        "eindeenheid":"dl",
+        "antwoord": "4,28",
+        "type": "classic"
+    },
+    {
+        "id": "21",
+        "vraag": "5700 ml",
+        "eindeenheid":"l",
+        "antwoord": "5,7",
+        "type": "classic"
+    },
+    {
+        "id": "22",
+        "vraag": "8 l",
+        "eindeenheid": "ml",
+        "antwoord": "8000",
+        "type": "classic"
+    },
+    {
+        "id": "23",
+        "vraag": "15 cl",
+        "eindeenheid": "ml",
+        "antwoord": "150",
+        "type": "classic"
+    },
+    {
+        "id": "24",
+        "vraag": "2,5 dl",
+        "eindeenheid": "ml",
+        "antwoord": "250",
+        "type": "classic"
+    },
+    {
+        "id": "25",
+        "vraag": "0,75 l",
+        "eindeenheid": "cl",
+        "antwoord": "75",
+        "type": "classic"
+    },
+    {
+        "id": "26",
+        "vraag": "9 dl",
+        "eindeenheid": "ml",
+        "antwoord": "900",
+        "type": "classic"
+    },
+    {
+        "id": "27",
+        "vraag": "1,2 l",
+        "eindeenheid": "dl",
+        "antwoord": "12",
+        "type": "classic"
+    },
+    {
+        "id": "28",
+        "vraag": "0,5 cl",
+        "eindeenheid": "ml",
+        "antwoord": "5",
+        "type": "classic"
+    },
+    {
+        "id": "29",
+        "vraag": "6,5 l",
+        "eindeenheid": "cl",
+        "antwoord": "650",
+        "type": "classic"
+    },
+    {
+        "id": "30",
+        "vraag": "4,8 dl",
+        "eindeenheid": "ml",
+        "antwoord": "480",
+        "type": "classic"
+    },
+    {
+        "id": "31",
+        "vraag": "0,25 l",
+        "eindeenheid": "cl",
+        "antwoord": "25",
+        "type": "classic"
+    },
+    {
+        "id": "32",
+        "vraag": "3,3 cl",
+        "eindeenheid": "ml",
+        "antwoord": "33",
+        "type": "classic"
+    },
+    {
+        "id": "33",
+        "vraag": "7,7 dl",
+        "eindeenheid": "ml",
+        "antwoord": "770",
+        "type": "classic"
+    },
+    {
+        "id": "34",
+        "vraag": "0,9 l",
+        "eindeenheid": "cl",
+        "antwoord": "90",
+        "type": "classic"
+    },
+    {
+        "id": "35",
+        "vraag": "5,5 dl",
+        "eindeenheid": "ml",
+        "antwoord": "550",
+        "type": "classic"
+    },
+    {
+        "id": "36",
+        "vraag": "1,8 l",
+        "eindeenheid": "dl",
+        "antwoord": "18",
+        "type": "classic"
+    },
+    {
+        "id": "37",
+        "vraag": "0,4 cl",
+        "eindeenheid": "ml",
+        "antwoord": "4",
+        "type": "classic"
+    },
+    {
+        "id": "38",
+        "vraag": "2,2 l",
+        "eindeenheid": "cl",
+        "antwoord": "220",
+        "type": "classic"
+    },
+    {
+        "id": "39",
+        "vraag": "6,3 dl",
+        "eindeenheid": "ml",
+        "antwoord": "630",
+        "type": "classic"
+    },
+    {
+        "id": "40",
+        "vraag": "0,15 l",
+        "eindeenheid": "cl",
+        "antwoord": "15",
+        "type": "classic"
+    },
+    {
+        "id": "41",
+        "vraag": "4,2 cl",
+        "eindeenheid": "ml",
+        "antwoord": "42",
+        "type": "classic"
+    },
+    {
+        "id": "42",
+        "vraag": "8,8 dl",
+        "eindeenheid": "ml",
+        "antwoord": "880",
+        "type": "classic"
+    },
+    {
+        "id": "43",
+        "vraag": "1,1 l",
+        "eindeenheid": "cl",
+        "antwoord": "110",
+        "type": "classic"
+    },
+    {
+        "id": "44",
+        "vraag": "5,7 dl",
+        "eindeenheid": "ml",
+        "antwoord": "570",
+        "type": "classic"
+    },
+    {
+        "id": "45",
+        "vraag": "2,4 l",
+        "eindeenheid": "dl",
+        "antwoord": "24",
+        "type": "classic"
+    },
+    {
+        "id": "46",
+        "vraag": "0,6 cl",
+        "eindeenheid": "ml",
+        "antwoord": "6",
+        "type": "classic"
+    },
+    {
+        "id": "47",
+        "vraag": "3,5 l",
+        "eindeenheid": "cl",
+        "antwoord": "350",
+        "type": "classic"
+    },
+    {
+        "id": "48",
+        "vraag": "7,1 dl",
+        "eindeenheid": "ml",
+        "antwoord": "710",
+        "type": "classic"
+    },
+    {
+        "id": "49",
+        "vraag": "0,2 l",
+        "eindeenheid": "cl",
+        "antwoord": "20",
+        "type": "classic"
+    },
+    {
+        "id": "50",
+        "vraag": "4,5 cl",
+        "eindeenheid": "ml",
+        "antwoord": "45",
+        "type": "classic"
+    },
+    {
+        "id": "51",
+        "vraag": "9,2 dl",
+        "eindeenheid": "ml",
+        "antwoord": "920",
+        "type": "classic"
+    },
+    {
+        "id": "52",
+        "vraag": "1,3 l",
+        "eindeenheid": "cl",
+        "antwoord": "130",
+        "type": "classic"
+    },
+    {
+        "id": "53",
+        "vraag": "6 dl",
+        "eindeenheid": "ml",
+        "antwoord": "600",
+        "type": "classic"
+    },
+    {
+        "id": "54",
+        "vraag": "2,6 l",
+        "eindeenheid": "dl",
+        "antwoord": "26",
+        "type": "classic"
+    },
+    {
+        "id": "56",
+        "vraag": "10 l",
+        "eindeenheid": "ml",
+        "antwoord": "10000",
+        "type": "classic"
+    },
+    {
+        "id": "57",
+        "vraag": "20 cl",
+        "eindeenheid": "ml",
+        "antwoord": "200",
+        "type": "classic"
+    },
+    {
+        "id": "58",
+        "vraag": "3 dl",
+        "eindeenheid": "ml",
+        "antwoord": "300",
+        "type": "classic"
+    },
+    {
+        "id": "59",
+        "vraag": "1,5 l",
+        "eindeenheid": "cl",
+        "antwoord": "150",
+        "type": "classic"
+    },
+    {
+        "id": "60",
+        "vraag": "7 dl",
+        "eindeenheid": "ml",
+        "antwoord": "700",
+        "type": "classic"
+    },
+    {
+        "id": "61",
+        "vraag": "2,5 l",
+        "eindeenheid": "dl",
+        "antwoord": "25",
+        "type": "classic"
+    },
+    {
+        "id": "62",
+        "vraag": "0,8 cl",
+        "eindeenheid": "ml",
+        "antwoord": "8",
+        "type": "classic"
+    },
+    {
+        "id": "63",
+        "vraag": "5 l",
+        "eindeenheid": "cl",
+        "antwoord": "500",
+        "type": "classic"
+    },
+    {
+        "id": "64",
+        "vraag": "3,6 dl",
+        "eindeenheid": "ml",
+        "antwoord": "360",
+        "type": "classic"
+    },
+    {
+        "id": "65",
+        "vraag": "0,3 l",
+        "eindeenheid": "cl",
+        "antwoord": "30",
+        "type": "classic"
+    },
+    {
+        "id": "66",
+        "vraag": "2 cl",
+        "eindeenheid": "ml",
+        "antwoord": "20",
+        "type": "classic"
+    },
+    {
+        "id": "67",
+        "vraag": "8 dl",
+        "eindeenheid": "ml",
+        "antwoord": "800",
+        "type": "classic"
+    },
+    {
+        "id": "68",
+        "vraag": "1,2 l",
+        "eindeenheid": "cl",
+        "antwoord": "120",
+        "type": "classic"
+    },
+    {
+        "id": "69",
+        "vraag": "4,5 dl",
+        "eindeenheid": "ml",
+        "antwoord": "450",
+        "type": "classic"
+    },
+    {
+        "id": "70",
+        "vraag": "2 l",
+        "eindeenheid": "dl",
+        "antwoord": "20",
+        "type": "classic"
+    },
+    {
+        "id": "71",
+        "vraag": "0,7 cl",
+        "eindeenheid": "ml",
+        "antwoord": "7",
+        "type": "classic"
+    },
+    {
+        "id": "72",
+        "vraag": "4 l",
+        "eindeenheid": "cl",
+        "antwoord": "400",
+        "type": "classic"
+    },
+    {
+        "id": "73",
+        "vraag": "6,2 dl",
+        "eindeenheid": "ml",
+        "antwoord": "620",
+        "type": "classic"
+    },
+    {
+        "id": "74",
+        "vraag": "0,4 l",
+        "eindeenheid": "cl",
+        "antwoord": "40",
+        "type": "classic"
+    },
+    {
+        "id": "75",
+        "vraag": "3 cl",
+        "eindeenheid": "ml",
+        "antwoord": "30",
+        "type": "classic"
+    },
+    {
+        "id": "76",
+        "vraag": "9 dl",
+        "eindeenheid": "ml",
+        "antwoord": "900",
+        "type": "classic"
+    },
+    {
+        "id": "77",
+        "vraag": "1,4 l",
+        "eindeenheid": "cl",
+        "antwoord": "140",
+        "type": "classic"
+    },
+    {
+        "id": "78",
+        "vraag": "5,3 dl",
+        "eindeenheid": "ml",
+        "antwoord": "530",
+        "type": "classic"
+    },
+    {
+        "id": "79",
+        "vraag": "2,1 l",
+        "eindeenheid": "dl",
+        "antwoord": "21",
+        "type": "classic"
+    },
+    {
+        "id": "80",
+        "vraag": "0,9 cl",
+        "eindeenheid": "ml",
+        "antwoord": "9",
+        "type": "classic"
+    },
+    {
+        "id": "81",
+        "vraag": "3,8 l",
+        "eindeenheid": "cl",
+        "antwoord": "380",
+        "type": "classic"
+    },
+    {
+        "id": "82",
+        "vraag": "7,4 dl",
+        "eindeenheid": "ml",
+        "antwoord": "740",
+        "type": "classic"
+    },
+    {
+        "id": "83",
+        "vraag": "0,5 l",
+        "eindeenheid": "cl",
+        "antwoord": "50",
+        "type": "classic"
+    },
+    {
+        "id": "84",
+        "vraag": "1 cl",
+        "eindeenheid": "ml",
+        "antwoord": "10",
+        "type": "classic"
+    },
+    {
+        "id": "85",
+        "vraag": "6 dl",
+        "eindeenheid": "ml",
+        "antwoord": "600",
+        "type": "classic"
+    },
+    {
+        "id": "86",
+        "vraag": "12 l",
+        "eindeenheid": "ml",
+        "antwoord": "12000",
+        "type": "classic"
+    },
+    {
+        "id": "87",
+        "vraag": "25 cl",
+        "eindeenheid": "ml",
+        "antwoord": "250",
+        "type": "classic"
+    },
+    {
+        "id": "88",
+        "vraag": "4 dl",
+        "eindeenheid": "ml",
+        "antwoord": "400",
+        "type": "classic"
+    },
+    {
+        "id": "89",
+        "vraag": "2 l",
+        "eindeenheid": "cl",
+        "antwoord": "200",
+        "type": "classic"
+    },
+    {
+        "id": "90",
+        "vraag": "8 dl",
+        "eindeenheid": "ml",
+        "antwoord": "800",
+        "type": "classic"
+    },
+    {
+        "id": "91",
+        "vraag": "3 l",
+        "eindeenheid": "dl",
+        "antwoord": "30",
+        "type": "classic"
+    },
+    {
+        "id": "92",
+        "vraag": "1 cl",
+        "eindeenheid": "ml",
+        "antwoord": "10",
+        "type": "classic"
+    },
+    {
+        "id": "93",
+        "vraag": "7 l",
+        "eindeenheid": "cl",
+        "antwoord": "700",
+        "type": "classic"
+    },
+    {
+        "id": "94",
+        "vraag": "5,5 dl",
+        "eindeenheid": "ml",
+        "antwoord": "550",
+        "type": "classic"
+    },
+    {
+        "id": "95",
+        "vraag": "0,5 l",
+        "eindeenheid": "cl",
+        "antwoord": "50",
+        "type": "classic"
+    },
+    {
+        "id": "96",
+        "vraag": "2,5 cl",
+        "eindeenheid": "ml",
+        "antwoord": "25",
+        "type": "classic"
+    },
+    {
+        "id": "97",
+        "vraag": "9 dl",
+        "eindeenheid": "ml",
+        "antwoord": "900",
+        "type": "classic"
+    },
+    {
+        "id": "98",
+        "vraag": "1,6 l",
+        "eindeenheid": "cl",
+        "antwoord": "160",
+        "type": "classic"
+    },
+    {
+        "id": "99",
+        "vraag": "6,8 dl",
+        "eindeenheid": "ml",
+        "antwoord": "680",
+        "type": "classic"
+    },
+    {
+        "id": "100",
+        "vraag": "0,6 l",
+        "eindeenheid": "cl",
+        "antwoord": "60",
+        "type": "classic"
+    }
+]
+

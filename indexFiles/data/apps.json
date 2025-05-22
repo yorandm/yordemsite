@@ -43,5 +43,19 @@
             "iedereen"
         ],
         "url": "/vermenigvuldiging"
+    },
+    {
+        "naam": "Herleiden inhoud",
+        "uitleg": "Deze app bevat oefeningen op het herleiden van inhoudsmaten 1B",
+        "voor": [
+            "1Ba",
+            "1Bb",
+            "1Bc",
+            "1Bd",
+            "1Be",
+            "1Bf",
+            "1Bg"
+        ],
+        "url": "/inhoud"
     }
 ]
