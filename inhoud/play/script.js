@@ -120,11 +120,11 @@ const checkAntw = (e) => {
     const userAnsw = document.getElementById("antwoord").value;
     if (userAnsw === vragen[huidigeVraag].antwoord) {
         document.getElementById("body").style = "background-color:green";
-        //timers[currentPlayer] += 5;
+        timers[currentPlayer] += 5;
         scores[currentPlayer]++;
     } else {
         document.getElementById("body").style = "background-color:red";
-        //timers[currentPlayer] -= 5;
+        timers[currentPlayer] -= 5;
     }
     sleep(500).then(() => {
         nextSequence();
