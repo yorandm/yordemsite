@@ -11,6 +11,7 @@ let uitgeschakeld;
 let totalTime = 60; //in seconds
 let updated = false;
 
+//Vragen downloaden
 async function populate() {
     const requestURL =
         "./vragen.json";
@@ -18,14 +19,14 @@ async function populate() {
 
     const response = await fetch(request);
     vragen = await response.json();
-
-
 }
 
+//helper function
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+//per deelnemer de timer ophalen
 const getTimers = () => {
     let list = "";
     for (let index = 0; index < numberOfPlayers; index++) {
@@ -34,6 +35,7 @@ const getTimers = () => {
     return list;
 }
 
+//Einde van het spel
 const endGameForEveryone = () => {
     document.getElementById("body").innerHTML = `<h1 id="einde"> Game over!</h1>`;
     sleep(500).then(() => {
@@ -48,6 +50,7 @@ const endGameForEveryone = () => {
     });
 }
 
+//Einde voor 1 speler
 const endGameFor = (deadPlayer) => {
     uitgeschakeld[deadPlayer] = true;
     let count = 0;
@@ -132,13 +135,17 @@ const checkAntw = (e) => {
 
 }
 
+//startup function
 const init = async() => {
+    //fill questions
     await populate();
 
+    //get game info
     totalTime = sessionStorage.getItem("totalTimer") ? Number(sessionStorage.getItem("totalTimer")) : 60;
     numberOfPlayers = sessionStorage.getItem("numberOfPlayers") ? Number(sessionStorage.getItem("numberOfPlayers")) : 2;
     players = sessionStorage.getItem("playerName") ? JSON.parse(sessionStorage.getItem("playerName")) : [];
 
+    //set game settings 
     timers = new Array(Number(numberOfPlayers)).fill(totalTime);
     scores = new Array(numberOfPlayers).fill(0);
     uitgeschakeld = new Array(numberOfPlayers).fill(false);

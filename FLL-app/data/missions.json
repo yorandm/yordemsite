@@ -1,8 +1,9 @@
-[
+{"2025":[
     {
         "missionID": 0,
+        "season":2025,
         "missionTitle": "Uitrustingsinspectie",
-        "missionImg": "20242025/inspectie.png",
+        "missionImg": "20252025/inspectie.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -16,8 +17,9 @@
     },
     {
         "missionID": 1,
+        "season":2025,
         "missionTitle": "KORAALKWEKERIJ",
-        "missionImg": "20242025/missie_01.png",
+        "missionImg": "20252025/missie_01.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -46,8 +48,9 @@
     },
     {
         "missionID": 2,
+        "season":2025,
         "missionTitle": "Haai",
-        "missionImg": "20242025/missie_02.png",
+        "missionImg": "20252025/missie_02.png",
         "missionPoints": [
             {
                 "id": 1,
@@ -67,8 +70,9 @@
     },
     {
         "missionID": 3,
+        "season":2025,
         "missionTitle": "Koraalrif",
-        "missionImg": "20242025/missie_03.png",
+        "missionImg": "20252025/missie_03.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -90,8 +94,9 @@
     },
     {
         "missionID": 4,
+        "season":2025,
         "missionTitle": "Duiker",
-        "missionImg": "20242025/missie_04.png",
+        "missionImg": "20252025/missie_04.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -112,8 +117,9 @@
     },
     {
         "missionID": 5,
+        "season":2025,
         "missionTitle": "Hengelvis",
-        "missionImg": "20242025/missie_05.png",
+        "missionImg": "20252025/missie_05.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -127,8 +133,9 @@
     },
     {
         "missionID": 6,
+        "season":2025,
         "missionTitle": "Hijs de mast",
-        "missionImg": "20242025/missie_06.png",
+        "missionImg": "20252025/missie_06.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -142,8 +149,9 @@
     },
     {
         "missionID": 7,
+        "season":2025,
         "missionTitle": "Kraken's schat",
-        "missionImg": "20242025/missie_07.png",
+        "missionImg": "20252025/missie_07.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -157,8 +165,9 @@
     },
     {
         "missionID": 8,
+        "season":2025,
         "missionTitle": "Kunstmatig leefgebied",
-        "missionImg": "20242025/missie_08.png",
+        "missionImg": "20252025/missie_08.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -173,8 +182,9 @@
     },
     {
         "missionID": 9,
+        "season":2025,
         "missionTitle": "Onverwachte ontmoeting",
-        "missionImg": "20242025/missie_09.png",
+        "missionImg": "20252025/missie_09.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -195,8 +205,9 @@
     },
     {
         "missionID": 10,
+        "season":2025,
         "missionTitle": "Stuur de duikboot over",
-        "missionImg": "20242025/missie_10.png",
+        "missionImg": "20252025/missie_10.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -217,8 +228,9 @@
     },
     {
         "missionID": 11,
+        "season":2025,
         "missionTitle": "Sonardetectie",
-        "missionImg": "20242025/missie_11.png",
+        "missionImg": "20252025/missie_11.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -239,8 +251,9 @@
     },
     {
         "missionID": 12,
+        "season":2025,
         "missionTitle": "voed de walvis",
-        "missionImg": "20242025/missie_12.png",
+        "missionImg": "20252025/missie_12.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -255,8 +268,9 @@
     },
     {
         "missionID": 13,
+        "season":2025,
         "missionTitle": "Vaarroutes wijzigen",
-        "missionImg": "20242025/missie_13.png",
+        "missionImg": "20252025/missie_13.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -270,8 +284,9 @@
     },
     {
         "missionID": 14,
+        "season":2025,
         "missionTitle": "Staalverzameling",
-        "missionImg": "20242025/missie_14.png",
+        "missionImg": "20252025/missie_14.png",
         "NoEquipment": false,
         "missionPoints": [
             {
@@ -313,8 +328,9 @@
     },
     {
         "missionID": 15,
+        "season":2025,
         "missionTitle": "Onderzoeksschip",
-        "missionImg": "20242025/missie_15.png",
+        "missionImg": "20252025/missie_15.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -370,8 +386,84 @@
     },
     {
         "missionID": 16,
+        "season":2025,
         "missionTitle": "Precisietokens",
-        "missionImg": "20242025/precisietokens.png",
+        "missionImg": "20252025/precisietokens.png",
+        "NoEquipment": true,
+        "missionPoints": [
+            {
+                "id": 1,
+                "type": "single",
+                "description": "precisietoken 1 =",
+                "checked": true,
+                "points": 10,
+                "factor": 1
+            },
+            {
+                "id": 2,
+                "type": "single",
+                "description": "precisietoken 2 = +",
+                "checked": true,
+                "points": 5,
+                "factor": 1
+            },
+            {
+                "id": 3,
+                "type": "single",
+                "description": "precisietoken 3 = +",
+                "checked": true,
+                "points": 10,
+                "factor": 1
+            },
+            {
+                "id": 4,
+                "type": "single",
+                "description": "precisietoken 4 = + ",
+                "checked": true,
+                "points": 10,
+                "factor": 1
+            },
+            {
+                "id": 5,
+                "type": "single",
+                "description": "precisietoken 5 = +",
+                "checked": true,
+                "points": 15,
+                "factor": 1
+            },
+            {
+                "id": 6,
+                "type": "single",
+                "description": "precisietoken 6 = +",
+                "checked": true,
+                "points": 0,
+                "factor": 1
+            }
+        ]
+    }
+],
+"2026":[
+    {
+        "missionID": 0,
+        "season":2025,
+        "missionTitle": "Uitrustingsinspectie",
+        "missionImg": "20252025/inspectie.png",
+        "NoEquipment": false,
+        "missionPoints": [
+            {
+                "id": 1,
+                "type": "single",
+                "description": "Als de robot en al de uitrusting volledig past in &eacute;&eacute;n startgebied en onder een hoogtelimiet van 30,5cm blijft tijdens de inspectie:",
+                "points": 20,
+                "factor": 1
+            }
+        ]
+    },
+        {
+        "missionID": 16,
+        "season":2025,
+        "missionTitle": "Precisietokens",
+        "missionImg": "20252025/precisietokens.png",
         "NoEquipment": true,
         "missionPoints": [
             {
@@ -425,3 +517,4 @@
         ]
     }
 ]
+}

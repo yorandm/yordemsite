@@ -1,7 +1,9 @@
 
+let allMissions;
 let missions;
 let totalScore = 0;
 let pointset;
+let season;
 
 async function populate() {
     const requestURL =
@@ -9,7 +11,9 @@ async function populate() {
     const request = new Request(requestURL);
 
     const response = await fetch(request);
-    missions = await response.json();
+    allMissions = await response.json();
+    missions = allMissions[season??"2026"]
+   
 
 }
 
@@ -92,6 +96,9 @@ const updateScore = () => {
 
 const getOption = () => {
     pointset = document.getElementById("selectionPointset").value;
+
+    season = document.getElementById("seasonSelect").value;
+    missions = allMissions[`${season}`];
 }
 
 const clear = () => {
@@ -104,6 +111,9 @@ const clear = () => {
 
 const setOnChangeForOption = () => {
     document.getElementById("selectionPointset").onchange = () => {
+        clear();
+    }
+    document.getElementById("seasonSelect").onchange = () => {
         clear();
     }
     document.getElementById("clearButton").onclick = () => {
