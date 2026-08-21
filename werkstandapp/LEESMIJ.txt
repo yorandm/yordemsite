@@ -1,0 +1,17 @@
+WERKSTAND WISKUNDE - LOKALE VERSIE
+
+1. Pak het zipbestand uit.
+2. Bewaar index.html, style.css en app.js samen in dezelfde map.
+3. Dubbelklik op index.html.
+
+Er is geen internetverbinding, account, installatie of webserver nodig.
+
+BEDIENING
+- Klik op een werkstand of gebruik de toetsen 1 tot en met 4.
+- Druk op F voor schermvullende weergave.
+- Gebruik Beeld-in-beeld voor een klein venster boven het bordboek.
+
+OPMERKING OVER BEELD-IN-BEELD
+Recente Chromium-browsers ondersteunen een echt beeld-in-beeldvenster.
+Als dat lokaal niet beschikbaar is, opent de knop een compact apart venster.
+De browser kan vragen om pop-ups voor dit lokale bestand toe te staan.

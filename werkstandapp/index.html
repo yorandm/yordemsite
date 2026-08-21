@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="nl-BE">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Werkstand Wiskunde</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">WISKUNDE</p>
+          <h1>Welke werkstand gebruiken we?</h1>
+        </div>
+        <div class="view-actions">
+          <button id="pip-button" class="view-button pip-button" type="button" title="Klein venster boven je bordboek">◱ <span>Beeld-in-beeld</span></button>
+          <button id="fullscreen-button" class="view-button" type="button" title="Schermvullend (F)">⛶ <span>Schermvullend</span></button>
+        </div>
+      </header>
+
+      <section class="current-mode" aria-live="polite">
+        <div id="mode-icon" class="mode-icon" aria-hidden="true">!</div>
+        <div class="mode-copy">
+          <p class="current-label">HUIDIGE WERKSTAND</p>
+          <h2 id="mode-label">INSTRUCTIE</h2>
+          <p id="mode-headline" class="headline">Let op</p>
+          <p id="mode-detail" class="detail">Stop je oefening. Pen neer. Kijk en luister.</p>
+        </div>
+      </section>
+
+      <section id="mode-picker" class="mode-picker" aria-label="Kies een werkstand"></section>
+
+      <footer>
+        <span>Klik op een werkstand of gebruik toetsen 1-4.</span>
+        <span>Beeld-in-beeld blijft zichtbaar boven je bordboek.</span>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

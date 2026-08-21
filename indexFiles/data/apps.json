@@ -57,5 +57,12 @@
             "1Bg"
         ],
         "url": "/inhoud"
+    },
+    {
+        "naam": "Werkstanden",
+        "uitleg": "Deze app bevat icoontjes en beeld voor werkstanden (alleen, instructie, buuroverleg,...",
+        "voor": ["alle klassen"
+        ],
+        "url": "/werkstandapp"
     }
 ]
