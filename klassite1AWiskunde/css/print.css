@@ -1,0 +1,20 @@
+@page { size: A4 landscape; margin: 8mm; }
+@media print {
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { background: white; }
+  .sidebar, .topbar, .no-print, footer { display: none !important; }
+  .layout { display: block; }
+  .content { padding: 0; max-width: none; }
+  .poster { width: 281mm; height: 194mm; display: grid; grid-template-rows: auto 1fr auto; gap: 4mm; overflow: hidden; }
+  .poster h1 { font-size: 25pt; margin: 0; }
+  .poster .lead { font-size: 11pt; margin: 1mm 0 0; }
+  .poster-board { display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 4mm; min-height: 0; }
+  .poster .poster-card { box-shadow: none; break-inside: avoid; padding: 4mm; border-width: 1.5px; }
+  .poster .poster-card h2 { font-size: 15pt; margin-bottom: 2mm; }
+  .poster .poster-card p, .poster .poster-card li { font-size: 9.5pt; margin: 1.5mm 0; line-height: 1.25; }
+  .poster .poster-center { grid-row: span 2; }
+  .poster .poster-center .venn { min-height: 86mm; }
+  .poster .poster-center .circle { width: 78mm; height: 56mm; background: transparent; }
+  .poster .venn-element i { display: block !important; width: 2.2mm; height: 2.2mm; left: -1.6mm; bottom: 0; border: .35mm solid #092f49 !important; background: #092f49 !important; }
+  .poster .poster-tip { margin: 0; padding: 3mm 4mm; }
+}

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-depth="1" data-page="getallen-en-verzamelingen" data-title="Getallen en verzamelingen">
+<div class="layout">
+<aside class="sidebar">
+<a class="brand" href="../index.html">
+<span class="brand-mark">W1</span>
+<span>
+<strong data-site-name>
+</strong>
+<small data-site-subtitle>
+</small>
+</span>
+</a>
+<nav data-navigation>
+</nav>
+</aside>
+<main class="content">
+<div class="topbar">
+<span class="eyebrow">Hoofdstuk 1</span>
+<button class="menu-button" data-menu-button>Menu</button>
+</div>
+<section class="hero">
+<p class="eyebrow">Getallen en verzamelingen</p>
+<h1>Hoe orden je elementen nauwkeurig?</h1>
+<p class="lead">Leer verzamelingen voorstellen, elementen herkennen en twee verzamelingen vergelijken of combineren.</p>
+<div class="actions">
+<a class="button" href="../posters/getallen-en-verzamelingen.html">Open de poster</a>
+</div>
+</section>
+<div class="grid">
+<section class="card">
+<h2>Dit moet je begrijpen</h2>
+<ul class="checklist">
+<li>Een verzameling bevat verschillende elementen die een geheel vormen.</li>
+<li>Een element behoort wel of niet tot een verzameling.</li>
+<li>In een opsomming noteer je elk verschillend element één keer.</li>
+<li>
+<strong>A is een deelverzameling van B</strong> als elk element van A ook een element van B is. A zit dus volledig in B.</li>
+<li>Doorsnede, unie en verschil kiezen elk op een andere manier elementen uit twee verzamelingen.</li>
+</ul>
+</section>
+<section class="card">
+<h2>Dit moet je kunnen</h2>
+<ul class="checklist">
+<li>Een verzameling voorstellen met een venndiagram en een opsomming.</li>
+<li>De symbolen <span class="math">∈, ∉, ⊂ en ⊄</span> correct gebruiken.</li>
+<li>Een doorsnede, unie en verschil bepalen.</li>
+<li>Wiskundetaal in beide richtingen omzetten: van woorden naar symbolen én van symbolen naar woorden.</li>
+<li>Een antwoord volledig lezen, verwoorden en uitleggen.</li>
+</ul>
+</section>
+<section class="card full">
+<h2>Wat betekent opsomming?</h2>
+<p>Bij een <strong>opsomming</strong> schrijf je alle verschillende elementen van de verzameling tussen accolades. Je scheidt de elementen met komma’s en noteert elk element maar één keer. <strong>Getallen rangschik je van klein naar groot.</strong></p>
+<div class="notation-example">
+<span>de verzameling van de verschillende letters van <strong>“ananas”</strong></span>
+<span class="notation-arrow"><small>opsomming</small> →</span>
+<strong class="math">A = {a, n, s}</strong>
+</div>
+<div class="edutron"><span class="role-icon">💡</span><div><strong>Edutron merkt op</strong><br>De letter <em>a</em> komt drie keer voor in het woord, maar slechts één keer in de opsomming.</div></div>
+<p class="math"><strong>Voorbeeld met getallen:</strong> {8, 2, 5, 2} schrijf je als {2, 5, 8}.</p>
+</section>
+<section class="card full">
+<h2>Kernsymbolen</h2>
+<table class="symbol-table">
+<thead>
+<tr>
+<th>Symbool</th>
+<th>Lees</th>
+<th>Voorbeeld</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="math">∈</td>
+<td>is een element van</td>
+<td class="math">a ∈ {a, b, c}</td>
+</tr>
+<tr>
+<td class="math">∉</td>
+<td>is geen element van</td>
+<td class="math">d ∉ {a, b, c}</td>
+</tr>
+<tr>
+<td class="math">⊂</td>
+<td>is een deelverzameling van</td>
+<td class="math">{a, b} ⊂ {a, b, c}</td>
+</tr>
+<tr>
+<td class="math">∩</td>
+<td>doorsnede: in beide</td>
+<td class="math">A ∩ B</td>
+</tr>
+<tr>
+<td class="math">∪</td>
+<td>unie: in minstens één</td>
+<td class="math">A ∪ B</td>
+</tr>
+<tr>
+<td class="math">∖</td>
+<td>verschil: wel in de eerste, niet in de tweede</td>
+<td class="math">A ∖ B</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="card full example-card">
+<div>
+<h2>Uitgewerkt en interactief voorbeeld</h2>
+<p class="math">A = {1, 2, 3, 4} &nbsp;&nbsp; B = {3, 4, 5}</p>
+<div class="operation-buttons" role="group" aria-label="Kies een bewerking">
+<button class="operation active" data-venn-operation="all">Alle elementen</button>
+<button class="operation" data-venn-operation="intersection">A ∩ B</button>
+<button class="operation" data-venn-operation="union">A ∪ B</button>
+<button class="operation" data-venn-operation="a-minus-b">A ∖ B</button>
+<button class="operation" data-venn-operation="b-minus-a">B ∖ A</button>
+</div>
+<p class="operation-result math" data-operation-result>Alle elementen van A en B</p>
+</div>
+<div class="venn interactive-venn" data-venn aria-label="Venndiagram met A is 1, 2, 3, 4 en B is 3, 4, 5">
+<span class="circle a">
+</span>
+<span class="circle b">
+</span>
+<svg class="region-outline" viewBox="0 0 420 260" aria-hidden="true">
+<ellipse class="base-oval a" cx="160" cy="130" rx="120" ry="90"/>
+<ellipse class="base-oval b" cx="260" cy="130" rx="120" ry="90"/>
+<path data-outline="intersection" d="M210 47.5 A120 90 0 0 1 210 212.5 A120 90 0 0 1 210 47.5"/>
+<path data-outline="union" d="M210 47.5 A120 90 0 1 0 210 212.5 A120 90 0 1 0 210 47.5"/>
+<path data-outline="a-minus-b" d="M210 47.5 A120 90 0 1 0 210 212.5 A120 90 0 0 1 210 47.5"/>
+<path data-outline="b-minus-a" d="M210 47.5 A120 90 0 0 1 210 212.5 A120 90 0 1 0 210 47.5"/>
+</svg>
+<span class="circle-label a">A</span>
+<span class="circle-label b">B</span>
+<span class="venn-element e1" data-regions="a union a-minus-b">
+<b>1</b>
+<i>
+</i>
+</span>
+<span class="venn-element e2" data-regions="a union a-minus-b">
+<b>2</b>
+<i>
+</i>
+</span>
+<span class="venn-element e3" data-regions="a b union intersection">
+<b>3</b>
+<i>
+</i>
+</span>
+<span class="venn-element e4" data-regions="a b union intersection">
+<b>4</b>
+<i>
+</i>
+</span>
+<span class="venn-element e5" data-regions="b union b-minus-a">
+<b>5</b>
+<i>
+</i>
+</span>
+</div>
+<div class="example-results">
+<p class="math">
+<mark class="intersection-color">A ∩ B = {3, 4}</mark>
+</p>
+<p class="math">
+<mark class="union-color">A ∪ B = {1, 2, 3, 4, 5}</mark>
+</p>
+<p class="math">
+<mark class="difference-color">A ∖ B = {1, 2}</mark>
+</p>
+<p class="math">
+<mark class="difference-b-color">B ∖ A = {5}</mark>
+</p>
+</div>
+<div class="edutron">
+<span class="role-icon">⚙</span>
+<div>
+<strong>Technische tip</strong>
+<br>Klik op een bewerking. De bijbehorende elementen worden aangeduid in het diagram.</div>
+</div>
+</section>
+<section class="card full">
+<h2>Veelgemaakte fouten</h2>
+<div class="edutron warning">
+<span class="role-icon">!</span>
+<div>
+<strong>Edutron waarschuwt</strong>
+<br>
+<span class="math">3 ∈ A</span> gaat over één element. <span class="math">{3} ⊂ A</span> gaat over een verzameling. Verwissel <span class="math">∈</span> en <span class="math">⊂</span> niet.</div>
+</div>
+<ul>
+<li>Bij de unie de overlap vergeten.</li>
+<li>Denken dat <span class="math">A ∖ B</span> hetzelfde is als <span class="math">B ∖ A</span>.</li>
+<li>Een element meer dan één keer in een opsomming schrijven.</li>
+</ul>
+</section>
+<section class="card full">
+<h2>Controleer jezelf</h2>
+<ol>
+<li>Noteer de verschillende letters van het woord <em>ananas</em> als verzameling.</li>
+<li>Leg het verschil uit tussen <span class="math">n ∈ A</span> en <span class="math">{n} ⊂ A</span>.</li>
+<li>Gegeven <span class="math">A={1,2,3}</span> en <span class="math">B={3,4}</span>. Bepaal <span class="math">A∩B</span>, <span class="math">A∪B</span> en <span class="math">A∖B</span>.</li>
+</ol>
+<button class="button secondary" data-answer-button aria-expanded="false">Toon antwoord</button>
+<div class="answer" hidden>
+<ol>
+<li>
+<span class="math">{a, n, s}</span>
+</li>
+<li>De eerste uitspraak gaat over een element; de tweede over een verzameling met één element.</li>
+<li>
+<span class="math">{3}</span>, <span class="math">{1,2,3,4}</span> en <span class="math">{1,2}</span>.</li>
+</ol>
+</div>
+</section>
+<section class="card full">
+<h2>Dit heb je later opnieuw nodig</h2>
+<div class="edutron future">
+<span class="role-icon">↗</span>
+<div>
+<strong>Edutron kijkt vooruit</strong>
+<br>Verzamelingen komen later terug bij deelbaarheid, getallenverzamelingen, oplossingen van vergelijkingen en het indelen van figuren.</div>
+</div>
+</section>
+</div>
+<footer>Hoofdstuk 1 · getallen en verzamelingen</footer>
+</main>
+</div>
+<script src="../js/config.js">
+</script>
+<script src="../js/app.js">
+</script>
+</body>
+</html>
