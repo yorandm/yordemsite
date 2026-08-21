@@ -64,5 +64,12 @@
         "voor": ["alle klassen"
         ],
         "url": "/werkstandapp"
+    },
+    {
+        "naam": "Klassite 1ST wiskunde",
+        "uitleg": "Deze klassite bevat nog niet veel en zal ik doorheen het jaar proberen uitbouwen.",
+        "voor": ["alle klassen 1A"
+        ],
+        "url": "/klassite1AWiskunde"
     }
 ]
