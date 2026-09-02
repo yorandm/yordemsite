@@ -71,5 +71,12 @@
         "voor": ["alle klassen 1A"
         ],
         "url": "/klassite1AWiskunde"
+    },
+    {
+        "naam": "Verzamellab",
+        "uitleg": "Extra oefenen voor verzamelingen.",
+        "voor": ["1ST1, 1ST2"
+        ],
+        "url": "/VerzamelLab"
     }
 ]

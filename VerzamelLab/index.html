@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VerzamelLab</title>
+  <meta name="description" content="Interactieve toepassing voor verzamelingen en venndiagrammen.">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top"><span class="brandmark">∩</span><span>VerzamelLab</span></a>
+    <nav class="mode-switch" aria-label="Kies een modus">
+      <button id="mode-class" class="active">Onze klas</button>
+      <button id="mode-general">Algemene verzamelingen</button>
+    </nav>
+    <div id="class-switcher" class="class-switcher" aria-label="Kies een klas"></div>
+    <button id="manage-toggle" class="manage-button">Beheer</button>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div><p id="eyebrow" class="eyebrow"></p><h1 id="hero-title"></h1><p id="intro" class="intro"></p></div>
+      <div class="hero-note"><span id="note-label"></span><strong id="note-title"></strong><p id="note-text"></p></div>
+    </section>
+
+    <section id="manager" class="manager hidden" aria-label="Leerkrachtenbeheer"></section>
+
+    <section class="lab">
+      <aside class="control-card">
+        <div class="step"><span>1</span><div><small>Weergave kiezen</small><h2>Hoeveel verzamelingen?</h2></div></div>
+        <div id="count-switch" class="count-switch"></div>
+        <div id="selectors" class="selectors"></div>
+        <div id="number-settings" class="number-settings hidden"></div>
+        <button id="edit-sets" class="link-button">＋ Thema’s/verzamelingen aanpassen</button>
+        <div class="dataset-summary"><b id="item-count">0</b><span id="item-count-label"></span><button id="edit-items">Bekijken en wijzigen →</button></div>
+      </aside>
+
+      <article class="diagram-card">
+        <div class="diagram-head"><div class="step"><span>2</span><div><small>Samen onderzoeken</small><h2 id="diagram-title"></h2></div></div><button id="hide-diagram" class="ghost hidden">Verberg</button></div>
+        <div id="diagram-stage"></div>
+      </article>
+    </section>
+
+    <section id="math-talk" class="math-talk"></section>
+  </main>
+
+  <footer><span>VerzamelLab — van persoonlijke verhalen naar abstract denken.</span><span>Gegevens blijven op dit toestel</span></footer>
+  <div id="modal-root"></div>
+  <script src="js/app.js" defer></script>
+</body>
+</html>
