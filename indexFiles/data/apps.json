@@ -78,5 +78,12 @@
         "voor": ["1ST1, 1ST2"
         ],
         "url": "/VerzamelLab"
+    },
+    {
+        "naam": "Bestelapp Koks",
+        "uitleg": "Hulp voor bestellingen",
+        "voor": ["Koks"
+        ],
+        "url": "/bestelmail_assistent"
     }
 ]

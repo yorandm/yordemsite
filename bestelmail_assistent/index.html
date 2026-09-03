@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bestelmail-assistent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">VTI Aalst · bestellingen</p>
+      <h1>Bestelmail-assistent</h1>
+      <p class="subtitle">Upload het aankoopadvies en kopieer per leverancier achtereenvolgens e-mailadres, onderwerp en mailbody.</p>
+    </div>
+    <button id="settingsToggle" class="button button-secondary" type="button" aria-expanded="false">Instellingen</button>
+  </header>
+
+  <main class="page-shell">
+    <div id="globalMessage" class="message" hidden role="status" aria-live="polite"></div>
+    <section id="uploadSection" class="panel upload-panel">
+      <div id="dropZone" class="drop-zone" tabindex="0" role="button" aria-label="Excelbestand kiezen">
+        <div class="upload-icon" aria-hidden="true">⇧</div>
+        <h2>Excelbestand uploaden</h2>
+        <p>Sleep een <strong>.xlsx</strong> of <strong>.xlsm</strong> hierheen, of kies een bestand.</p>
+        <button id="chooseFileButton" class="button button-primary" type="button">Kies Excelbestand</button>
+        <input id="fileInput" type="file" accept=".xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel.sheet.macroEnabled.12" hidden>
+      </div>
+      <div id="uploadMessage" class="message" hidden></div>
+    </section>
+
+    <section id="settingsPanel" class="panel settings-panel" hidden>
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Eenmalig instellen</p>
+          <h2>Mailinstellingen</h2>
+          <p>E-mailadressen worden alleen lokaal in deze browser opgeslagen. Het Excelbestand wordt niet geüpload naar internet.</p>
+        </div>
+      </div>
+
+      <div class="settings-grid">
+        <label>
+          <span>School / afzendernaam</span>
+          <input id="schoolName" type="text" value="VTI Aalst">
+        </label>
+        <label>
+          <span>Onderwerpsjabloon</span>
+          <input id="subjectTemplate" type="text" value="Bestelling {school} =&gt; {leverancier} datum: {datum}">
+          <small>Beschikbaar: {school}, {leverancier}, {datum}</small>
+        </label>
+        <label class="settings-wide">
+          <span>Inleidende tekst van de mail</span>
+          <textarea id="introText" rows="4">VTI Aalst
+Bestelling</textarea>
+        </label>
+      </div>
+
+      <div class="supplier-email-heading">
+        <div>
+          <h3>E-mailadressen leveranciers</h3>
+          <p>Nieuwe leveranciers uit een volgend bestand verschijnen automatisch en kunnen hier één keer worden ingevuld.</p>
+        </div>
+      </div>
+      <div id="emailSettingsEmpty" class="empty-state compact">Upload eerst een Excelbestand om leveranciers te tonen.</div>
+      <div id="emailSettings" class="email-settings"></div>
+      <div class="settings-actions">
+        <button id="saveSettings" class="button button-primary" type="button">Instellingen opslaan</button>
+        <button id="resetSettings" class="button button-ghost" type="button">Lokale instellingen wissen</button>
+      </div>
+    </section>
+
+
+
+
+    <section id="workspace" class="workspace" hidden>
+      <aside class="panel supplier-panel">
+        <div class="panel-heading compact-heading">
+          <div>
+            <p class="eyebrow">Bestand</p>
+            <h2 id="fileNameLabel">Leveranciers</h2>
+          </div>
+          <button id="newFileButton" class="button button-ghost small" type="button">Ander bestand</button>
+        </div>
+        <div id="fileSummary" class="summary-strip"></div>
+        <div id="supplierList" class="supplier-list"></div>
+      </aside>
+
+      <section class="panel workflow-panel">
+        <div id="noSupplier" class="empty-state">
+          <h2>Kies een leverancier</h2>
+          <p>Selecteer links een leverancier om de kopieerreeks te starten.</p>
+        </div>
+
+        <div id="supplierWorkflow" hidden>
+          <div class="workflow-header">
+            <div>
+              <p class="eyebrow">Huidige leverancier</p>
+              <h2 id="currentSupplierName"></h2>
+              <p id="currentSupplierMeta" class="muted"></p>
+            </div>
+            <span id="supplierStatusBadge" class="status-badge"></span>
+          </div>
+
+          <div class="stepper" aria-label="Kopieerstappen">
+            <div class="step" data-step="0"><span>1</span><strong>E-mailadres</strong></div>
+            <div class="step" data-step="1"><span>2</span><strong>Onderwerp</strong></div>
+            <div class="step" data-step="2"><span>3</span><strong>Body</strong></div>
+            <div class="step" data-step="3"><span>✓</span><strong>Versturen</strong></div>
+          </div>
+
+          <div id="missingEmailNotice" class="warning-box" hidden>
+            Voor deze leverancier ontbreekt nog een e-mailadres. Vul het bovenaan bij <strong>Instellingen</strong> in en sla het op.
+          </div>
+
+          <div class="copy-card">
+            <p id="stepInstruction" class="copy-label"></p>
+            <div id="copyPreview" class="copy-preview"></div>
+            <div class="copy-actions">
+              <button id="copyNextButton" class="button button-primary button-large" type="button"></button>
+              <button id="copyAgainButton" class="button button-secondary" type="button" hidden>Kopieer huidige stap opnieuw</button>
+              <button id="previousStepButton" class="button button-ghost" type="button" hidden>Vorige stap</button>
+              <button id="mailToButton" class="button button-primary button-large" type="button">Maak email in mail app en kopieer bestelling.</button>
+
+            </div>
+            <div id="copyFeedback" class="copy-feedback" role="status" aria-live="polite"></div>
+          </div>
+
+          <div class="body-preview-section">
+            <div class="section-title-row">
+              <div>
+                <p class="eyebrow">Controle</p>
+                <h3>Voorbeeld van de mailbody</h3>
+              </div>
+            </div>
+            <div id="bodyPreview" class="mail-preview"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+
+
+
+
+
+
+
+
+
+  <footer class="footer">
+    <p>Werkt lokaal in de browser. Er is geen Node, server, login of internetverbinding nodig.</p>
+  </footer>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
