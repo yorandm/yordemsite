@@ -199,10 +199,67 @@
     }
     if(layout==="normal"&&count>1) outer:for(let i=0;i<sourceSets.length;i++)for(let j=0;j<sourceSets.length;j++)if(i!==j&&isSubset(sourceSets[i],sourceSets[j])){display=[sourceSets[i],sourceSets[j],...sourceSets.filter((_,k)=>k!==i&&k!==j)];layout="subset";break outer}
     const mask=x=>display.reduce((m,s,i)=>x.sets.includes(s.id)?m|(1<<i):m,0),groups=Array.from({length:1<<count},(_,m)=>sourceItems.filter(x=>mask(x)===m));
-    const disjoint=count===2&&!groups[3].length&&layout==="normal",style=`--a:${display[0]?.color};--b:${display[1]?.color};--c:${display[2]?.color}`;
-    return `<div class="venn venn-${count} venn-${layout} ${disjoint?"venn-disjoint":""}" style="${style}">${display.map((s,i)=>`<div class="set-label set-label-${i}"><span>${esc(s.name)}</span></div>`).join("")}${display.map((s,i)=>`<div class="venn-circle circle-${i}"></div>`).join("")}${groups.map((g,m)=>m&&g.length?`<div class="region region-${count}-${m}">${chips(g,mode==="general")}</div>`:"").join("")}<div class="outside-region"><small>U ∖ ${count===1?"A":count===2?"(A ∪ B)":"(A ∪ B ∪ C)"}</small>${chips(groups[0],mode==="general")}</div></div>`;
+    if(count===2&&layout==="normal"&&!groups[3].length)layout="disjoint";
+    return svgVenn(display,groups,count,layout,mode==="general");
   }
-  function chips(list,math){return `<div class="chips ${math?"mathematical":""}">${list.map(x=>`<span>${esc(x.label)}</span>`).join("")}</div>`}
+
+  function svgVenn(display,groups,count,layout,mathematical){
+    const ellipses=diagramEllipses(count,layout).map((e,i)=>({...e,index:i,color:display[i].color}));
+    const occupied=[],overflow=[];
+    let elements="";
+    groups.forEach((list,mask)=>list.forEach(entry=>{
+      const placed=findSafeElementPosition(entry.label,mask,ellipses,occupied);
+      if(!placed){overflow.push({entry,mask});return}
+      occupied.push(placed.box);
+      elements+=`<g class="svg-element ${mathematical?"mathematical":""}"><circle cx="${placed.x}" cy="${placed.y+3}" r="3"></circle><text x="${placed.x+9}" y="${placed.y}" font-size="${placed.font}">${esc(entry.label)}</text></g>`;
+    }));
+    const shapes=[...ellipses].sort((a,b)=>(b.rx*b.ry)-(a.rx*a.ry)).map(e=>`<ellipse cx="${e.cx}" cy="${e.cy}" rx="${e.rx}" ry="${e.ry}" fill="${e.color}" fill-opacity=".42" stroke="#46534c" stroke-width="2"></ellipse>`).join("");
+    const labels=ellipses.map(e=>`<text class="svg-set-label" x="${e.cx}" y="${Math.max(24,e.cy-e.ry-12)}" text-anchor="middle">${esc(display[e.index].name)}</text>`).join("");
+    const outside=`U ∖ ${count===1?display[0].name:`(${display.map(s=>s.name).join(" ∪ ")})`}`;
+    const overflowHtml=overflow.length?`<div class="diagram-overflow"><b>Extra elementen — behoren tot:</b>${overflow.map(({entry,mask})=>`<span><i>•</i> ${esc(entry.label)} <small>${esc(maskName(mask,display))}</small></span>`).join("")}</div>`:"";
+    return `<div class="venn-svg-wrap"><svg class="venn-svg" viewBox="0 0 800 560" role="img" aria-label="Venndiagram van ${esc(display.map(s=>s.name).join(", "))}"><rect x="1" y="1" width="798" height="558" rx="18" fill="#eef0e9" stroke="#d9ddd7"></rect>${shapes}${labels}${elements}<text class="svg-universe-label" x="24" y="540">${esc(outside)}</text></svg>${overflowHtml}</div>`;
+  }
+
+  function diagramEllipses(count,layout){
+    if(count===1)return [{cx:400,cy:270,rx:285,ry:205}];
+    if(count===2&&layout==="subset")return [{cx:340,cy:295,rx:145,ry:112},{cx:400,cy:270,rx:305,ry:210}];
+    if(count===2&&layout==="disjoint")return [{cx:235,cy:275,rx:185,ry:155},{cx:565,cy:275,rx:185,ry:155}];
+    if(count===2)return [{cx:310,cy:275,rx:235,ry:180},{cx:490,cy:275,rx:235,ry:180}];
+    if(layout==="two-subsets")return [{cx:245,cy:300,rx:140,ry:120},{cx:555,cy:300,rx:140,ry:120},{cx:400,cy:270,rx:350,ry:220}];
+    if(layout==="two-subsets-overlap")return [{cx:325,cy:305,rx:165,ry:125},{cx:475,cy:305,rx:165,ry:125},{cx:400,cy:270,rx:350,ry:220}];
+    if(layout==="nested-chain")return [{cx:400,cy:310,rx:115,ry:88},{cx:400,cy:290,rx:225,ry:155},{cx:400,cy:270,rx:350,ry:220}];
+    if(layout==="subset")return [{cx:300,cy:300,rx:145,ry:110},{cx:315,cy:275,rx:265,ry:195},{cx:515,cy:305,rx:200,ry:160}];
+    return [{cx:315,cy:225,rx:215,ry:160},{cx:485,cy:225,rx:215,ry:160},{cx:400,cy:355,rx:215,ry:160}];
+  }
+
+  function pointMask(x,y,ellipses){return ellipses.reduce((mask,e,i)=>mask|((((x-e.cx)/e.rx)**2+((y-e.cy)/e.ry)**2<=1)?(1<<i):0),0)}
+
+  function boxHasMask(box,mask,ellipses){
+    return ellipses.every((e,i)=>{
+      const inside=Boolean(mask&(1<<i));
+      if(inside){const dx=Math.max(Math.abs(box.x1-e.cx),Math.abs(box.x2-e.cx)),dy=Math.max(Math.abs(box.y1-e.cy),Math.abs(box.y2-e.cy));return (dx/e.rx)**2+(dy/e.ry)**2<=.965}
+      const dx=e.cx<box.x1?box.x1-e.cx:e.cx>box.x2?e.cx-box.x2:0,dy=e.cy<box.y1?box.y1-e.cy:e.cy>box.y2?e.cy-box.y2:0;return (dx/e.rx)**2+(dy/e.ry)**2>=1.035
+    });
+  }
+
+  function findSafeElementPosition(label,mask,ellipses,occupied){
+    for(const font of [13,12,11,10]){
+      const width=Math.max(16,label.length*font),candidates=[];
+      for(let y=66;y<=510;y+=18)for(let x=26;x<=748-width;x+=18){
+        const box={x1:x-5,y1:y-font-3,x2:x+12+width,y2:y+8};
+        if(box.x1<16||box.x2>784||box.y1<38||box.y2>520||!boxHasMask(box,mask,ellipses))continue;
+        if(occupied.some(o=>!(box.x2+5<o.x1||box.x1-5>o.x2||box.y2+5<o.y1||box.y1-5>o.y2)))continue;
+        candidates.push({x,y,font,box});
+      }
+      if(candidates.length){
+        if(!occupied.length)return candidates[Math.floor(candidates.length/2)];
+        return candidates.reduce((best,c)=>{const score=Math.min(...occupied.map(o=>(c.x-(o.x1+o.x2)/2)**2+(c.y-(o.y1+o.y2)/2)**2));return !best||score>best.score?{...c,score}:best},null);
+      }
+    }
+    return null;
+  }
+
+  function maskName(mask,display){const names=display.filter((_,i)=>mask&(1<<i)).map(s=>s.name);return names.length?names.join(" ∩ "):`buiten ${display.map(s=>s.name).join(", ")}`}
 
   function renderMath(){const active=chosen().slice(0,state.viewCount).map(id=>sets().find(s=>s.id===id)).filter(Boolean),intersection=items().filter(x=>active.every(s=>x.sets.includes(s.id))),union=items().filter(x=>active.some(s=>x.sets.includes(s.id))),first=items().filter(x=>active[0]&&x.sets.includes(active[0].id)),word=n=>`${n} ${n===1?"element":"elementen"}`;$("math-talk").innerHTML=`<div class="step light"><span>3</span><div><small>Wiskundetaal</small><h2>Van kijken naar verwoorden</h2></div></div><div class="talk-grid"><article><span class="symbol">${state.viewCount===1?"x ∈ A":state.viewCount===2?"A ∩ B":"A ∩ B ∩ C"}</span><h3>${state.viewCount===1?"Element":"Doorsnede"}</h3><p>Welke elementen behoren tot ${state.viewCount===1?"de gekozen verzameling":"alle gekozen verzamelingen"}?</p><b>${state.revealed?word(state.viewCount===1?first.length:intersection.length):"Eerst voorspellen"}</b></article><article><span class="symbol">${state.viewCount===1?"x ∉ A":state.viewCount===2?"A ∪ B":"A ∪ B ∪ C"}</span><h3>${state.viewCount===1?"Complement in U":"Unie"}</h3><p>Welke elementen behoren tot ${state.viewCount===1?"U, maar niet tot A":"minstens één gekozen verzameling"}?</p><b>${state.revealed?word(state.viewCount===1?items().length-first.length:union.length):"Eerst voorspellen"}</b></article><article><span class="symbol">A ⊆ U</span><h3>Universele verzameling</h3><p>Alle weergegeven elementen vormen samen U.</p><b>${word(items().length)} in U</b></article></div><div class="teacher-prompt"><b>Gespreksstarter</b><p>“Hoe weet je zeker dat dit element precies in dit gebied hoort?”</p></div>`}
 

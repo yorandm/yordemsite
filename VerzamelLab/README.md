@@ -10,6 +10,8 @@ Deze versie werkt zonder Node.js, installatie of internetverbinding.
 
 Laat de mappen `css`, `js` en `assets` naast `index.html` staan. Anders kan de browser de vormgeving of werking niet laden.
 
+Bij een update: verwijder of hernoem eerst je oude uitgepakte programmamap en pak daarna het nieuwe zipbestand volledig uit. Je leerlinggegevens staan in de browser en blijven behouden; gebruik voor alle zekerheid vooraf de knop **Back-up**.
+
 ## Gegevens bewaren
 
 Leerlingen, elementen, thema's en instellingen worden lokaal opgeslagen in de browser. Gebruik je een andere browser of computer, dan staan de ingevoerde gegevens daar niet automatisch in.
@@ -36,6 +38,8 @@ De diagramweergave herkent onder andere:
 - gewone overlap en disjuncte verzamelingen.
 
 Lege gebieden krijgen niet automatisch het symbool `∅`; alleen werkelijk ingevoerde elementen worden in een gebied getoond.
+
+De actuele versie tekent de diagrammen als SVG. Voor elk element wordt de volledige ruimte van het punt en de elementnaam geometrisch gecontroleerd. Alleen een positie die volledig binnen precies de juiste verzameling(en) en volledig buiten alle andere verzamelingen ligt, wordt gebruikt. Wanneer een diagram uitzonderlijk te vol wordt, verschijnen resterende elementen in een duidelijk benoemde lijst onder het diagram in plaats van in een fout gebied.
 
 ## Back-up exporteren en importeren
 
