@@ -26,6 +26,29 @@ In de modus **Onze klas** staat bovenaan een klasselector.
 
 Bestaande gegevens uit een eerdere offlineversie worden bij de eerste opening automatisch onder **Klas 1** geplaatst.
 
+## Deelverzamelingen
+
+De diagramweergave herkent onder andere:
+
+- één deelverzameling binnen een grotere verzameling;
+- twee afzonderlijke deelverzamelingen binnen dezelfde bovenverzameling;
+- drie geneste verzamelingen;
+- gewone overlap en disjuncte verzamelingen.
+
+Lege gebieden krijgen niet automatisch het symbool `∅`; alleen werkelijk ingevoerde elementen worden in een gebied getoond.
+
+## Back-up exporteren en importeren
+
+Gebruik bovenaan de knop **Back-up**.
+
+- **Back-up downloaden** bewaart alle klassen, leerlingen, thema's, algemene verzamelingen en instellingen in één `.json`-bestand.
+- **Back-up kiezen** importeert zo'n bestand op dezelfde of een andere computer.
+- Voor het importeren wordt de inhoud gecontroleerd en zie je hoeveel klassen en leerlingen het bestand bevat.
+- Importeren vervangt pas na jouw bevestiging de gegevens die in de huidige browser staan.
+- Exporteren en importeren gebeuren volledig lokaal. Het bestand wordt niet naar een server verstuurd.
+
+Bewaar het back-upbestand bijvoorbeeld op een USB-stick. Maak best regelmatig een nieuwe back-up, want browsergegevens kunnen verdwijnen wanneer de browseropslag wordt gewist.
+
 ## Bestandsstructuur
 
 ```text

@@ -75,6 +75,47 @@
     $("delete-class").onclick=()=>{if(state.classes.length===1)return;if(confirm(`Klas ${current.name} met alle leerlingen en thema’s verwijderen? Dit kan niet ongedaan worden gemaakt.`)){state.classes=state.classes.filter(c=>c.id!==current.id);state.activeClassId=state.classes[0].id;$("modal-root").innerHTML="";render()}};
   }
 
+  function openDataManager(){
+    $("modal-root").innerHTML=`<div class="modal-backdrop"><div class="modal backup-modal"><p class="eyebrow">Lokale gegevens</p><h2>Back-up maken of terugzetten</h2><p class="backup-intro">Exporteer alle klassen, leerlingen, thema’s, algemene verzamelingen en instellingen naar één bestand. Je kunt dit bestand bewaren op een USB-stick en op een andere computer importeren.</p><div class="backup-options"><article><span>↓</span><div><h3>Gegevens exporteren</h3><p>Maakt een lokaal <code>.json</code>-bestand. Er wordt niets naar internet verstuurd.</p><button id="export-data" class="primary small">Back-up downloaden</button></div></article><article><span>↑</span><div><h3>Gegevens importeren</h3><p>Controleert eerst het bestand. Na bevestiging vervangt de back-up de gegevens in deze browser.</p><button id="import-data" class="ghost">Back-up kiezen</button><input id="import-file" class="visually-hidden" type="file" accept="application/json,.json"></div></article></div><div id="backup-status" class="backup-status" role="status"></div><div class="modal-actions"><button id="close-backup" class="ghost">Sluiten</button></div></div></div>`;
+    $("close-backup").onclick=()=>$("modal-root").innerHTML="";
+    $("export-data").onclick=exportData;
+    $("import-data").onclick=()=>$("import-file").click();
+    $("import-file").onchange=e=>importData(e.target.files[0]);
+  }
+
+  function exportData(){
+    const payload={format:"verzamellab-backup",version:1,exportedAt:new Date().toISOString(),data:clone(state)};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+    const url=URL.createObjectURL(blob),link=document.createElement("a"),date=new Date().toISOString().slice(0,10);
+    link.href=url;link.download=`VerzamelLab-back-up-${date}.json`;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    $("backup-status").textContent="De back-up is gedownload en bevat alle lokale VerzamelLab-gegevens.";
+  }
+
+  async function importData(file){
+    const status=$("backup-status");
+    if(!file)return;
+    if(file.size>10*1024*1024){status.textContent="Dit bestand is groter dan 10 MB en wordt niet geopend.";return}
+    try{
+      const parsed=JSON.parse(await file.text()),imported=normalizeImportedState(parsed);
+      const summary=`${imported.classes.length} ${imported.classes.length===1?"klas":"klassen"} en ${imported.classes.reduce((n,c)=>n+c.pupils.length,0)} leerlingen`;
+      if(!confirm(`Deze geldige back-up bevat ${summary}. De huidige lokale gegevens worden vervangen. Doorgaan?`)){status.textContent="Importeren geannuleerd; de huidige gegevens zijn behouden.";return}
+      state=imported;state.manager=null;state.revealed=false;save();$("modal-root").innerHTML="";render();alert("De back-up is succesvol geïmporteerd.");
+    }catch(error){status.textContent=`Importeren mislukt: ${error.message}`}
+  }
+
+  function normalizeImportedState(payload){
+    if(!payload||payload.format!=="verzamellab-backup"||payload.version!==1||!payload.data)throw new Error("dit is geen geldig VerzamelLab-back-upbestand.");
+    const raw=payload.data;
+    if(!Array.isArray(raw.classes)||!raw.classes.length||raw.classes.length>100)throw new Error("de klassenlijst ontbreekt of is ongeldig.");
+    const cleanText=(value,max,label)=>{if(typeof value!=="string"||!value.trim()||value.length>max)throw new Error(`${label} is ongeldig.`);return value.trim()};
+    const cleanSets=(list,prefix)=>{if(!Array.isArray(list)||!list.length||list.length>100)throw new Error(`de verzamelingen van ${prefix} zijn ongeldig.`);const map=new Map(),sets=list.map((s,i)=>{const old=String(s?.id??i),id=`${prefix}-set-${i}-${Math.random().toString(36).slice(2,7)}`;map.set(old,id);return {id,name:cleanText(s?.name,100,"Een verzamelingsnaam"),icon:typeof s?.icon==="string"?s.icon.slice(0,8):"✦",color:typeof s?.color==="string"&&/^#[0-9a-f]{6}$/i.test(s.color)?s.color:palette[i%palette.length]}});return {sets,map}};
+    const cleanItems=(list,map,prefix)=>{if(!Array.isArray(list)||list.length>5000)throw new Error(`de elementen van ${prefix} zijn ongeldig.`);return list.map((x,i)=>({id:`${prefix}-item-${i}-${Math.random().toString(36).slice(2,7)}`,label:cleanText(x?.label,150,"Een elementnaam"),sets:Array.isArray(x?.sets)?[...new Set(x.sets.map(String).map(id=>map.get(id)).filter(Boolean))]:[]}))};
+    const classes=raw.classes.map((c,i)=>{const prefix=`class-${i}-${Math.random().toString(36).slice(2,7)}`,built=cleanSets(c?.classSets,prefix),pupils=cleanItems(c?.pupils,built.map,prefix),chosen=Array.isArray(c?.chosenClass)?c.chosenClass.map(String).map(id=>built.map.get(id)).filter(Boolean).slice(0,3):[];return {id:prefix,name:cleanText(c?.name,100,"Een klasnaam"),classSets:built.sets,pupils,chosenClass:[...chosen,...built.sets.map(s=>s.id).filter(id=>!chosen.includes(id))].slice(0,3)}});
+    const generalBuilt=cleanSets(raw.generalSets||numberSets,"general"),generalItems=cleanItems(raw.generalItems||[],generalBuilt.map,"general"),generalChosen=Array.isArray(raw.chosenGeneral)?raw.chosenGeneral.map(String).map(id=>generalBuilt.map.get(id)).filter(Boolean):[];
+    const oldActive=raw.classes.findIndex(c=>c.id===raw.activeClassId),activeIndex=oldActive>=0?oldActive:0;
+    return {mode:raw.mode==="general"?"general":"class",classes,activeClassId:classes[activeIndex].id,generalSets:generalBuilt.sets,generalItems,numberMax:Math.max(1,Math.min(100,Number(raw.numberMax)||30)),viewCount:Math.max(1,Math.min(3,Number(raw.viewCount)||2)),chosenGeneral:[...generalChosen,...generalBuilt.sets.map(s=>s.id).filter(id=>!generalChosen.includes(id))].slice(0,3),revealed:false,manager:null,search:""};
+  }
+
   function renderHero() {
     const classroom = state.mode === "class";
     $("eyebrow").textContent = classroom ? "Kennismaken • nadenken • verwoorden" : "Onderzoeken • voorspellen • bewijzen";
@@ -142,18 +183,32 @@
   }
 
   function vennHtml(sourceSets, sourceItems, count, mode) {
-    let display=[...sourceSets],subset=false;
-    if(count>1) outer:for(let i=0;i<sourceSets.length;i++)for(let j=0;j<sourceSets.length;j++)if(i!==j){const inside=sourceItems.filter(x=>x.sets.includes(sourceSets[i].id)),outside=sourceItems.filter(x=>x.sets.includes(sourceSets[j].id));if(inside.length&&inside.every(x=>x.sets.includes(sourceSets[j].id))&&outside.some(x=>!x.sets.includes(sourceSets[i].id))){display=[sourceSets[i],sourceSets[j],...sourceSets.filter((_,k)=>k!==i&&k!==j)];subset=true;break outer}}
+    const members=s=>sourceItems.filter(x=>x.sets.includes(s.id));
+    const isSubset=(small,big)=>{const a=members(small),b=members(big);return a.length>0&&a.every(x=>x.sets.includes(big.id))&&b.some(x=>!x.sets.includes(small.id))};
+    let display=[...sourceSets],layout="normal";
+    if(count===3){
+      for(let outer=0;outer<3;outer++){
+        const children=[0,1,2].filter(i=>i!==outer);
+        if(isSubset(sourceSets[children[0]],sourceSets[outer])&&isSubset(sourceSets[children[1]],sourceSets[outer])){
+          if(isSubset(sourceSets[children[0]],sourceSets[children[1]])) { display=[sourceSets[children[0]],sourceSets[children[1]],sourceSets[outer]]; layout="nested-chain"; }
+          else if(isSubset(sourceSets[children[1]],sourceSets[children[0]])) { display=[sourceSets[children[1]],sourceSets[children[0]],sourceSets[outer]]; layout="nested-chain"; }
+          else { display=[sourceSets[children[0]],sourceSets[children[1]],sourceSets[outer]]; layout=sourceItems.some(x=>x.sets.includes(display[0].id)&&x.sets.includes(display[1].id))?"two-subsets-overlap":"two-subsets"; }
+          break;
+        }
+      }
+    }
+    if(layout==="normal"&&count>1) outer:for(let i=0;i<sourceSets.length;i++)for(let j=0;j<sourceSets.length;j++)if(i!==j&&isSubset(sourceSets[i],sourceSets[j])){display=[sourceSets[i],sourceSets[j],...sourceSets.filter((_,k)=>k!==i&&k!==j)];layout="subset";break outer}
     const mask=x=>display.reduce((m,s,i)=>x.sets.includes(s.id)?m|(1<<i):m,0),groups=Array.from({length:1<<count},(_,m)=>sourceItems.filter(x=>mask(x)===m));
-    const disjoint=count===2&&!groups[3].length&&!subset,style=`--a:${display[0]?.color};--b:${display[1]?.color};--c:${display[2]?.color}`;
-    return `<div class="venn venn-${count} ${subset?"venn-subset":""} ${disjoint?"venn-disjoint":""}" style="${style}">${display.map((s,i)=>`<div class="set-label set-label-${i}"><span>${esc(s.name)}</span></div>`).join("")}${display.map((s,i)=>`<div class="venn-circle circle-${i}"></div>`).join("")}${groups.map((g,m)=>m?`<div class="region region-${count}-${m}">${chips(g,mode==="general")}</div>`:"").join("")}<div class="outside-region"><small>U ∖ ${count===1?"A":count===2?"(A ∪ B)":"(A ∪ B ∪ C)"}</small>${chips(groups[0],mode==="general")}</div></div>`;
+    const disjoint=count===2&&!groups[3].length&&layout==="normal",style=`--a:${display[0]?.color};--b:${display[1]?.color};--c:${display[2]?.color}`;
+    return `<div class="venn venn-${count} venn-${layout} ${disjoint?"venn-disjoint":""}" style="${style}">${display.map((s,i)=>`<div class="set-label set-label-${i}"><span>${esc(s.name)}</span></div>`).join("")}${display.map((s,i)=>`<div class="venn-circle circle-${i}"></div>`).join("")}${groups.map((g,m)=>m&&g.length?`<div class="region region-${count}-${m}">${chips(g,mode==="general")}</div>`:"").join("")}<div class="outside-region"><small>U ∖ ${count===1?"A":count===2?"(A ∪ B)":"(A ∪ B ∪ C)"}</small>${chips(groups[0],mode==="general")}</div></div>`;
   }
-  function chips(list,math){return `<div class="chips ${math?"mathematical":""}">${list.length?list.map(x=>`<span>${esc(x.label)}</span>`).join(""):"<em>∅</em>"}</div>`}
+  function chips(list,math){return `<div class="chips ${math?"mathematical":""}">${list.map(x=>`<span>${esc(x.label)}</span>`).join("")}</div>`}
 
   function renderMath(){const active=chosen().slice(0,state.viewCount).map(id=>sets().find(s=>s.id===id)).filter(Boolean),intersection=items().filter(x=>active.every(s=>x.sets.includes(s.id))),union=items().filter(x=>active.some(s=>x.sets.includes(s.id))),first=items().filter(x=>active[0]&&x.sets.includes(active[0].id)),word=n=>`${n} ${n===1?"element":"elementen"}`;$("math-talk").innerHTML=`<div class="step light"><span>3</span><div><small>Wiskundetaal</small><h2>Van kijken naar verwoorden</h2></div></div><div class="talk-grid"><article><span class="symbol">${state.viewCount===1?"x ∈ A":state.viewCount===2?"A ∩ B":"A ∩ B ∩ C"}</span><h3>${state.viewCount===1?"Element":"Doorsnede"}</h3><p>Welke elementen behoren tot ${state.viewCount===1?"de gekozen verzameling":"alle gekozen verzamelingen"}?</p><b>${state.revealed?word(state.viewCount===1?first.length:intersection.length):"Eerst voorspellen"}</b></article><article><span class="symbol">${state.viewCount===1?"x ∉ A":state.viewCount===2?"A ∪ B":"A ∪ B ∪ C"}</span><h3>${state.viewCount===1?"Complement in U":"Unie"}</h3><p>Welke elementen behoren tot ${state.viewCount===1?"U, maar niet tot A":"minstens één gekozen verzameling"}?</p><b>${state.revealed?word(state.viewCount===1?items().length-first.length:union.length):"Eerst voorspellen"}</b></article><article><span class="symbol">A ⊆ U</span><h3>Universele verzameling</h3><p>Alle weergegeven elementen vormen samen U.</p><b>${word(items().length)} in U</b></article></div><div class="teacher-prompt"><b>Gespreksstarter</b><p>“Hoe weet je zeker dat dit element precies in dit gebied hoort?”</p></div>`}
 
   $("mode-class").onclick=()=>{state.mode="class";state.revealed=false;render()};
   $("mode-general").onclick=()=>{state.mode="general";state.revealed=false;render()};
+  $("data-button").onclick=()=>openDataManager();
   $("manage-toggle").onclick=()=>{state.manager=state.manager?null:"items";render()};
   $("edit-sets").onclick=()=>{state.manager="sets";render();scrollTo({top:250,behavior:"smooth"})};
   $("edit-items").onclick=()=>{state.manager="items";render();scrollTo({top:250,behavior:"smooth"})};
