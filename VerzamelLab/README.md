@@ -41,6 +41,8 @@ Lege gebieden krijgen niet automatisch het symbool `∅`; alleen werkelijk ingev
 
 De actuele versie tekent de diagrammen als SVG. Voor elk element wordt de volledige ruimte van het punt en de elementnaam geometrisch gecontroleerd. Alleen een positie die volledig binnen precies de juiste verzameling(en) en volledig buiten alle andere verzamelingen ligt, wordt gebruikt. Wanneer een diagram uitzonderlijk te vol wordt, verschijnen resterende elementen in een duidelijk benoemde lijst onder het diagram in plaats van in een fout gebied.
 
+De browser meet daarbij de werkelijke breedte van iedere elementnaam. Hierdoor passen korte namen efficiënter in kleine doorsneden en blijft de normale leesgrootte zo lang mogelijk behouden. Pas daarna probeert de toepassing een beperkt kleinere tekstgrootte.
+
 Met de schakelaar **Elementen buiten de gekozen verzameling(en)** bepaal je of elementen uit het buitengebied zichtbaar zijn. Verbergen verwijdert geen gegevens. De keuze wordt lokaal bewaard en maakt deel uit van een back-up.
 
 ## Volledig scherm

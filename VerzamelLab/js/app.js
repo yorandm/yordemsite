@@ -224,7 +224,7 @@
     const occupied=[],overflow=[];
     let elements="";
     groups.forEach((list,mask)=>{if(mask===0&&!state.showOutside)return;list.forEach(entry=>{
-      const placed=findSafeElementPosition(entry.label,mask,ellipses,occupied);
+      const placed=findSafeElementPosition(entry.label,mask,ellipses,occupied,mathematical);
       if(!placed){overflow.push({entry,mask});return}
       occupied.push(placed.box);
       elements+=`<g class="svg-element ${mathematical?"mathematical":""}"><circle cx="${placed.x}" cy="${placed.y+3}" r="3"></circle><text x="${placed.x+9}" y="${placed.y}" font-size="${placed.font}">${esc(entry.label)}</text></g>`;
@@ -258,9 +258,19 @@
     });
   }
 
-  function findSafeElementPosition(label,mask,ellipses,occupied){
+  let textMeasureCanvas=null;
+  function measuredLabelWidth(label,font,mathematical=false){
+    try{
+      textMeasureCanvas=textMeasureCanvas||document.createElement("canvas");
+      const context=textMeasureCanvas.getContext("2d");
+      context.font=`${mathematical?400:700} ${font}px ${mathematical?"Georgia":"Arial"}`;
+      return Math.ceil(context.measureText(label).width)+2;
+    }catch{return Math.ceil(label.length*font*.65)+2}
+  }
+
+  function findSafeElementPosition(label,mask,ellipses,occupied,mathematical=false){
     for(const font of [13,12,11,10]){
-      const width=Math.max(16,label.length*font),candidates=[];
+      const width=Math.max(16,measuredLabelWidth(label,font,mathematical)),candidates=[];
       for(let y=66;y<=510;y+=18)for(let x=26;x<=748-width;x+=18){
         const box={x1:x-5,y1:y-font-3,x2:x+12+width,y2:y+8};
         if(box.x1<16||box.x2>784||box.y1<38||box.y2>520||!boxHasMask(box,mask,ellipses))continue;
