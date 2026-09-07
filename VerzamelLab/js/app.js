@@ -18,8 +18,9 @@
     mode: "class", classes: [makeClass("Klas 1", clone(starterPupils))], activeClassId: "class-1",
     generalSets: clone(numberSets), generalItems: makeNumbers(30), numberMax: 30,
     viewCount: 2, chosenGeneral: ["even", "odd", "three"],
-    revealed: false, manager: null, search: ""
+    revealed: false, manager: null, search: "", showOutside: true
   };
+  if(typeof state.showOutside!=="boolean")state.showOutside=true;
 
   const $ = id => document.getElementById(id);
   const esc = value => String(value).replace(/[&<>'"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"}[c]));
@@ -113,7 +114,7 @@
     const classes=raw.classes.map((c,i)=>{const prefix=`class-${i}-${Math.random().toString(36).slice(2,7)}`,built=cleanSets(c?.classSets,prefix),pupils=cleanItems(c?.pupils,built.map,prefix),chosen=Array.isArray(c?.chosenClass)?c.chosenClass.map(String).map(id=>built.map.get(id)).filter(Boolean).slice(0,3):[];return {id:prefix,name:cleanText(c?.name,100,"Een klasnaam"),classSets:built.sets,pupils,chosenClass:[...chosen,...built.sets.map(s=>s.id).filter(id=>!chosen.includes(id))].slice(0,3)}});
     const generalBuilt=cleanSets(raw.generalSets||numberSets,"general"),generalItems=cleanItems(raw.generalItems||[],generalBuilt.map,"general"),generalChosen=Array.isArray(raw.chosenGeneral)?raw.chosenGeneral.map(String).map(id=>generalBuilt.map.get(id)).filter(Boolean):[];
     const oldActive=raw.classes.findIndex(c=>c.id===raw.activeClassId),activeIndex=oldActive>=0?oldActive:0;
-    return {mode:raw.mode==="general"?"general":"class",classes,activeClassId:classes[activeIndex].id,generalSets:generalBuilt.sets,generalItems,numberMax:Math.max(1,Math.min(100,Number(raw.numberMax)||30)),viewCount:Math.max(1,Math.min(3,Number(raw.viewCount)||2)),chosenGeneral:[...generalChosen,...generalBuilt.sets.map(s=>s.id).filter(id=>!generalChosen.includes(id))].slice(0,3),revealed:false,manager:null,search:""};
+    return {mode:raw.mode==="general"?"general":"class",classes,activeClassId:classes[activeIndex].id,generalSets:generalBuilt.sets,generalItems,numberMax:Math.max(1,Math.min(100,Number(raw.numberMax)||30)),viewCount:Math.max(1,Math.min(3,Number(raw.viewCount)||2)),chosenGeneral:[...generalChosen,...generalBuilt.sets.map(s=>s.id).filter(id=>!generalChosen.includes(id))].slice(0,3),revealed:false,manager:null,search:"",showOutside:typeof raw.showOutside==="boolean"?raw.showOutside:true};
   }
 
   function renderHero() {
@@ -167,6 +168,8 @@
     document.querySelectorAll("[data-count]").forEach(b=>b.onclick=()=>{state.viewCount=Number(b.dataset.count);state.revealed=false;render()});
     $("selectors").innerHTML=Array.from({length:state.viewCount},(_,i)=>`<label><b>Verzameling ${String.fromCharCode(65+i)}</b><select data-selector="${i}">${sets().map(s=>`<option value="${s.id}" ${chosen()[i]===s.id?"selected":""}>${esc(s.icon)} ${esc(s.name)}</option>`).join("")}</select></label>`).join("");
     document.querySelectorAll("[data-selector]").forEach(sel=>sel.onchange=()=>{const index=Number(sel.dataset.selector),next=[...chosen()],other=next.findIndex((x,i)=>x===sel.value&&i!==index);if(other>=0)[next[index],next[other]]=[next[other],next[index]];else next[index]=sel.value;updateChosen(next);state.revealed=false;render()});
+    $("outside-setting").innerHTML=`<label class="toggle-row"><input id="show-outside" type="checkbox" ${state.showOutside?"checked":""}><span class="toggle-control" aria-hidden="true"></span><span><b>Elementen buiten de gekozen verzameling(en)</b><small>${state.showOutside?"Worden getoond in het buitengebied":"Zijn tijdelijk verborgen"}</small></span></label>`;
+    $("show-outside").onchange=e=>{state.showOutside=e.target.checked;render()};
     const number=$("number-settings");
     if(state.mode==="general") { number.classList.remove("hidden"); number.innerHTML=`<b>Universele verzameling</b><div><span>U = {1, 2, …,</span><input id="number-max" type="number" min="1" max="100" value="${state.numberMax}"><span>}</span></div><button id="generate">Genereer alle getallen</button><small>Vult alle even en oneven getallen en veelvouden van 3 automatisch in.</small>`;$("generate").onclick=()=>{state.numberMax=Math.max(1,Math.min(100,Number($("number-max").value)||1));generateNumbers()}; }
     else { number.classList.add("hidden"); number.innerHTML=""; }
@@ -177,10 +180,23 @@
 
   function renderDiagram() {
     const active=chosen().slice(0,state.viewCount).map(id=>sets().find(s=>s.id===id)).filter(Boolean);
-    $("diagram-title").textContent=active.map(s=>s.name).join(" • ");$("hide-diagram").classList.toggle("hidden",!state.revealed);
+    $("diagram-title").textContent=active.map(s=>s.name).join(" • ");$("hide-diagram").classList.toggle("hidden",!state.revealed);$("fullscreen-diagram").classList.toggle("hidden",!state.revealed);
     if(!state.revealed){$("diagram-stage").innerHTML=`<div class="predict"><div class="mini-venn count-${state.viewCount}">${Array.from({length:state.viewCount},(_,i)=>`<span>${String.fromCharCode(65+i)}</span>`).join("")}<b>?</b></div><h3>Voorspel vóór je kijkt</h3><p>${state.viewCount===1?"Welke elementen behoren tot deze verzameling?":state.viewCount===2?"Wat verwacht je in de doorsnede en buiten beide cirkels?":"Welke elementen zouden in alle drie de verzamelingen kunnen liggen?"}</p><button id="reveal" class="primary">Toon het diagram →</button></div>`;$("reveal").onclick=()=>{state.revealed=true;render()};return;}
     $("diagram-stage").innerHTML=vennHtml(active,items(),state.viewCount,state.mode);
   }
+
+  async function toggleDiagramFullscreen(){
+    const card=document.querySelector(".diagram-card");
+    if(document.fullscreenElement===card){await document.exitFullscreen();return}
+    if(card.classList.contains("diagram-fullscreen-fallback")){closeFallbackFullscreen();return}
+    if(card.requestFullscreen){try{await card.requestFullscreen();return}catch{}}
+    card.classList.add("diagram-fullscreen-fallback");document.body.classList.add("fullscreen-open");updateFullscreenButton();
+  }
+
+  function closeFallbackFullscreen(){const card=document.querySelector(".diagram-card");card.classList.remove("diagram-fullscreen-fallback");document.body.classList.remove("fullscreen-open");updateFullscreenButton()}
+  function updateFullscreenButton(){const active=document.fullscreenElement===document.querySelector(".diagram-card")||document.querySelector(".diagram-card").classList.contains("diagram-fullscreen-fallback");$("fullscreen-diagram").textContent=active?"Sluit volledig scherm":"Volledig scherm"}
+  document.addEventListener("fullscreenchange",updateFullscreenButton);
+  document.addEventListener("keydown",e=>{if(e.key==="Escape"&&document.querySelector(".diagram-card").classList.contains("diagram-fullscreen-fallback"))closeFallbackFullscreen()});
 
   function vennHtml(sourceSets, sourceItems, count, mode) {
     const members=s=>sourceItems.filter(x=>x.sets.includes(s.id));
@@ -207,17 +223,17 @@
     const ellipses=diagramEllipses(count,layout).map((e,i)=>({...e,index:i,color:display[i].color}));
     const occupied=[],overflow=[];
     let elements="";
-    groups.forEach((list,mask)=>list.forEach(entry=>{
+    groups.forEach((list,mask)=>{if(mask===0&&!state.showOutside)return;list.forEach(entry=>{
       const placed=findSafeElementPosition(entry.label,mask,ellipses,occupied);
       if(!placed){overflow.push({entry,mask});return}
       occupied.push(placed.box);
       elements+=`<g class="svg-element ${mathematical?"mathematical":""}"><circle cx="${placed.x}" cy="${placed.y+3}" r="3"></circle><text x="${placed.x+9}" y="${placed.y}" font-size="${placed.font}">${esc(entry.label)}</text></g>`;
-    }));
+    })});
     const shapes=[...ellipses].sort((a,b)=>(b.rx*b.ry)-(a.rx*a.ry)).map(e=>`<ellipse cx="${e.cx}" cy="${e.cy}" rx="${e.rx}" ry="${e.ry}" fill="${e.color}" fill-opacity=".42" stroke="#46534c" stroke-width="2"></ellipse>`).join("");
     const labels=ellipses.map(e=>`<text class="svg-set-label" x="${e.cx}" y="${Math.max(24,e.cy-e.ry-12)}" text-anchor="middle">${esc(display[e.index].name)}</text>`).join("");
     const outside=`U ∖ ${count===1?display[0].name:`(${display.map(s=>s.name).join(" ∪ ")})`}`;
     const overflowHtml=overflow.length?`<div class="diagram-overflow"><b>Extra elementen — behoren tot:</b>${overflow.map(({entry,mask})=>`<span><i>•</i> ${esc(entry.label)} <small>${esc(maskName(mask,display))}</small></span>`).join("")}</div>`:"";
-    return `<div class="venn-svg-wrap"><svg class="venn-svg" viewBox="0 0 800 560" role="img" aria-label="Venndiagram van ${esc(display.map(s=>s.name).join(", "))}"><rect x="1" y="1" width="798" height="558" rx="18" fill="#eef0e9" stroke="#d9ddd7"></rect>${shapes}${labels}${elements}<text class="svg-universe-label" x="24" y="540">${esc(outside)}</text></svg>${overflowHtml}</div>`;
+    return `<div class="venn-svg-wrap"><svg class="venn-svg" viewBox="0 0 800 560" role="img" aria-label="Venndiagram van ${esc(display.map(s=>s.name).join(", "))}"><rect x="1" y="1" width="798" height="558" rx="18" fill="#eef0e9" stroke="#d9ddd7"></rect>${shapes}${labels}${elements}${state.showOutside?`<text class="svg-universe-label" x="24" y="540">${esc(outside)}</text>`:""}</svg>${overflowHtml}</div>`;
   }
 
   function diagramEllipses(count,layout){
@@ -269,6 +285,7 @@
   $("manage-toggle").onclick=()=>{state.manager=state.manager?null:"items";render()};
   $("edit-sets").onclick=()=>{state.manager="sets";render();scrollTo({top:250,behavior:"smooth"})};
   $("edit-items").onclick=()=>{state.manager="items";render();scrollTo({top:250,behavior:"smooth"})};
-  $("hide-diagram").onclick=()=>{state.revealed=false;render()};
+  $("fullscreen-diagram").onclick=()=>toggleDiagramFullscreen();
+  $("hide-diagram").onclick=async()=>{if(document.fullscreenElement===document.querySelector(".diagram-card"))await document.exitFullscreen();closeFallbackFullscreen();state.revealed=false;render()};
   render();
 })();
